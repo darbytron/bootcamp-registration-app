@@ -1,6 +1,6 @@
-var todoApp = angular.module('todoApp', ['ngRoute']);
+var registrationApp = angular.module('registrationApp', ['ngRoute']);
 
-todoApp.config(function($routeProvider)
+registrationApp.config(function($routeProvider)
 {
 	$routeProvider.when("/",
 	{
@@ -22,7 +22,7 @@ todoApp.config(function($routeProvider)
 	
 });
 
-todoApp.controller('usersController', ['$scope', '$http', '$location', function($scope, $http, $location){
+registrationApp.controller('usersController', ['$scope', '$http', '$location', function($scope, $http, $location){
 	$scope.pageTitle = "Users";
 
     $http.get('resource/user').
@@ -54,7 +54,7 @@ todoApp.controller('usersController', ['$scope', '$http', '$location', function(
     };
 }]);
 
-todoApp.controller('listsController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
+registrationApp.controller('listsController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
 	$scope.pageTitle = "Lists";
 	
 	$http.get('resource/todolist/user/' + $routeParams.userid).
@@ -86,7 +86,7 @@ todoApp.controller('listsController', ['$scope', '$http', '$location', '$routePa
     };
 }]);
 
-todoApp.controller('listDetailController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams){
+registrationApp.controller('listDetailController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams){
 
 	$scope.pageTitle = "Loading list...";
 	

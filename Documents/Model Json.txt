@@ -1,0 +1,67 @@
+"category" : {
+	"id" : <int id>,
+	"name" : <string name>,
+	"events" : {
+		<array of events, see Event below>
+	}
+}
+	
+"type" : {
+	"id" : <int id>,
+	"name" : <string name>,
+	"events" : {
+		<array of events, see Event below>
+	}
+}
+	
+"event" : {
+	"id" : <int id>
+	"title" : <string title>,
+	"startDate" : <mm-dd-yyyy date>,
+	"endDate" : <mm-dd-yyyy date>,
+	"category" : <see Category above>,
+	"type" : <see Type above>,
+	"description" : <string description>,
+	"owner" : <see User below>,
+	"logo" : <returns picture, need to figure this out>,
+	"location" : <string location>,
+	"status" : <string status>,
+	"registrations" : {
+		<array of users attending event, see Registrations below>
+	}
+	"food" : {
+		<array of food being brought, see Food below>
+	}
+}
+
+registrations : {
+	"userId" : <int user id>
+	"eventId" : <int event id>
+}
+
+"user" : {
+	"id" : <int id>
+	"username" : <string username>,
+	"password" : <string password>,
+	"firstName" : <string first name>,
+	"lastName" : <string last name>,
+	"address1" : <address line 1>,
+	"address2" : <address line 2>,
+	"city" : <string city>,
+	"state" : <string state>,
+	"zip" : <int zip>,
+	"phoneHome" : <int phone number for home>,
+	"phoneCell" : <int phone number for cell>,
+	"phoneOffice" : <int phone number for office>,
+	"company" : <string company name>,
+	"branch" : <string branch location>
+	"food" : <see Food below>,
+	"moreInfo" : <string more informaiton>
+}
+
+"food" : {
+	"id" : <int id>,
+	"name" : <string name of food>
+}
+
+	

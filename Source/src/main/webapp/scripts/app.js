@@ -7,13 +7,13 @@ registrationApp.config(function($routeProvider)
 		templateUrl: "../views/users.html",
 		controller: "usersController"
 	});
-	
+
 	$routeProvider.when("/lists/:userid",
 	{
 		templateUrl: "../views/listview.html",
 		controller: "listsController"
 	});
-	
+
 	$routeProvider.when("/listdetail/:listid",
 	{
 		templateUrl: "../views/listdetail.html",
@@ -56,18 +56,18 @@ registrationApp.controller('usersController', ['$scope', '$http', '$location', f
 
 registrationApp.controller('listsController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
 	$scope.pageTitle = "Lists";
-	
+
 	$http.get('resource/todolist/user/' + $routeParams.userid).
 	success(function(data, status, headers, config) {
 		$scope.lists = data;
 	}).
 	error(function(data, status, headers, config) {
-		
+
 	});
-	
+
 	$scope.displayList = function(listid) {
 		/*resource/todolist/1*/
-		
+
 		$location.path('/listdetail/' + listid);
 	};
 
@@ -89,18 +89,18 @@ registrationApp.controller('listsController', ['$scope', '$http', '$location', '
 registrationApp.controller('listDetailController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams){
 
 	$scope.pageTitle = "Loading list...";
-	
+
 	$http.get('resource/todolist/' + $routeParams.listid).
 	success(function(data, status, headers, config) {
 		$scope.pageTitle = data.name;
 		$scope.data = data;
 	}).
 	error(function(data, status, headers, config) {
-	
+
 	});
 
 	$scope.addNewTask = function() {
-		
+
 		var newTaskData = { "description": $scope.newTask, "active": "true" };
 		$http.post('resource/todoitem/' + $routeParams.listid, newTaskData).
 		success(function(data, status, headers, config) {
@@ -112,8 +112,8 @@ registrationApp.controller('listDetailController', ['$scope', '$http', '$routePa
 		});
 
 	};
-	
-	
+
+
 }]);
 
 

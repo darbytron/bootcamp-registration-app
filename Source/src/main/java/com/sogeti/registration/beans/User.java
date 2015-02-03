@@ -4,6 +4,8 @@
  */
 package com.sogeti.registration.beans;
 
+import java.util.HashSet;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,9 +19,10 @@ import javax.persistence.Table;
 public class User {
 		
 	private String username, password, firstName, lastName, address1, address2;
-	private String city, state, companyName, branchLocation, additonalInfo;
+	private String city, state, companyName, branchLocation, additionalInfo;
 	private String zip, phoneHome, phoneOffice, phoneCell;
 	private int id;
+	private HashSet<Event> events;
 	
 //	@Id
 //	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -172,12 +175,12 @@ public class User {
 	}
 	
 	@Column(name="txtAddtionalInfo")
-	public String getAdditonalInfo() {
-		return additonalInfo;
+	public String getAdditionalInfo() {
+		return additionalInfo;
 	}
 	
-	public void setAdditonalInfo(String additonalInfo) {
-		this.additonalInfo = additonalInfo;
+	public void setAdditionalInfo(String additionalInfo) {
+		this.additionalInfo = additionalInfo;
 	}
 
 }

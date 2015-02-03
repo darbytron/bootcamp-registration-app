@@ -24,11 +24,10 @@
         
         
         <!-- Mappings -->
-        
-        <!-- 
-        <mapping class="com.sogeti.todo.beans.ToDoItem" />
-        <mapping class="com.sogeti.todo.beans.ToDoList" />
-        <mapping class="com.sogeti.todo.beans.User" />  -->
+
+        <mapping class="com.sogeti.registration.beans.Event" />
+        <mapping class="com.sogeti.registration.beans.UserEvent" />
+        <mapping class="com.sogeti.registration.beans.User" /> 
 
         
     </session-factory>

@@ -10,7 +10,7 @@ public class RegistrationResourceConfig extends ResourceConfig {
 	
 	public RegistrationResourceConfig()
 	{
-		packages("com.sogeti.todo.resource");
+		packages("com.sogeti.registration.resource");
 		register(JacksonFeature.class);
 		
 	}

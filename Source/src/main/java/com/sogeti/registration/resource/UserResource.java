@@ -14,10 +14,12 @@ import javax.ws.rs.core.MediaType;
 
 import com.sogeti.registration.beans.User;
 import com.sogeti.registration.hibernate.HibernateUtil;
+import com.sogeti.registration.service.EventService;
 import com.sogeti.registration.service.UserService;
 
 @Path("user")
-public class UserResource {
+public class UserResource 
+{
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -39,7 +41,8 @@ public class UserResource {
 		return list;
 		*/
 		
-		try {
+		try 
+		{
 			UserService userService = new UserService();
 			return userService.getUsers();
 		} catch (Exception e) {
@@ -60,7 +63,8 @@ public class UserResource {
 		return u;
 		
 		*/
-		try {
+		try 
+		{
 			UserService userService = new UserService();
 			return userService.getUser(id);
 		} catch (Exception e) {
@@ -81,12 +85,38 @@ public class UserResource {
 	@Path("{id}")
 	public void deleteUser(@PathParam("id") int id)
 	{
-		try {
+		try 
+		{
 			UserService userService = new UserService();
 			userService.deleteUser(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	
+	
+	
+	@GET
+	@Path("/user/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<User> getEventsForUser(@PathParam("id") int id) 
+	{
+		try 
+		{
+			UserService userService = new UserService();
+			return userService.getEventsForUser(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+	
+	
+	
 	
 }

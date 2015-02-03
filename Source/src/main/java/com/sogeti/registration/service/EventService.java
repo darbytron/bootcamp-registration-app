@@ -7,42 +7,45 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
+import antlr.debug.Event;
+
 import com.sogeti.registration.beans.ToDoList;
 import com.sogeti.registration.beans.User;
 import com.sogeti.registration.hibernate.HibernateUtil;
 
-public class UserService {
-	
-	public List<User> getUsers() throws Exception {
+public class EventService 
+{
+
+	public List<Event> getEvents() throws Exception {
 		Session session = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			return session.createCriteria(User.class).list();
+			return session.createCriteria(Event.class).list();
  		}
 		finally {
 			session.close();
 		}
 	}
 	
-	public User getUser(int id) throws Exception {
+	public Event getEvent(int id) throws Exception {
 		Session session = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			User user = (User) session.get(User.class, id);
-			return user;
+			Event event = (Event) session.get(Event.class, id);
+			return event;
  		}
 		finally {
 			session.close();
 		}
 	}
 	
-	public void deleteUser(int id) throws Exception {
+	public void deleteEvent(int id) throws Exception {
 		Session session = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			User user = (User) session.get(User.class, id);
+			Event event = (Event) session.get(Event.class, id);
 			Transaction t = session.beginTransaction();
-			session.delete(user);
+			session.delete(event);
 			t.commit();		
 			session.flush();
  		}
@@ -58,7 +61,8 @@ public class UserService {
 	
 	
 	
-	public List<User> getEventsForUser(int id) {
+	
+	public List<User> getUsersForEvent(int id) {
 		Session session = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
@@ -74,6 +78,12 @@ public class UserService {
 			session.close();
 		}
 	}
+	
+	
+	
+	
+	
+	
 	
 	
 	

@@ -5,6 +5,8 @@
 
 package com.sogeti.registration.beans;
 
+import java.util.HashSet;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +23,8 @@ public class Event
 	private int id, ownerId;
 	private String title, desc, logoPath, location;
 	private boolean status;
+	
+	private HashSet<User> users;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

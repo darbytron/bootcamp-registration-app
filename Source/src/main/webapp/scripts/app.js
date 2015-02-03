@@ -1,22 +1,22 @@
-var registrationApp = angular.module('registrationApp', ['ngRoute']);
+var registrationApp = angular.module('app', ['ngRoute']);
 
 registrationApp.config(function($routeProvider)
 {
 	$routeProvider.when("/",
 	{
-		templateUrl: "views/users.html",
+		templateUrl: "../views/users.html",
 		controller: "usersController"
 	});
 	
 	$routeProvider.when("/lists/:userid",
 	{
-		templateUrl: "views/listview.html",
+		templateUrl: "../views/listview.html",
 		controller: "listsController"
 	});
 	
 	$routeProvider.when("/listdetail/:listid",
 	{
-		templateUrl: "views/listdetail.html",
+		templateUrl: "../views/listdetail.html",
 		controller: "listDetailController"
 	});
 	

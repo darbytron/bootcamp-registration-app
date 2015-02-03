@@ -2,12 +2,13 @@ var registrationApp = angular.module('app', ['ngRoute']);
 
 registrationApp.config(function($routeProvider)
 {
+
 	$routeProvider.when("/",
 	{
-		templateUrl: "../views/users.html",
-		controller: "usersController"
+		templateUrl: "../views/user/login.html",
+		controller: "loginController"
 	});
-	
+	/*
 	$routeProvider.when("/lists/:userid",
 	{
 		templateUrl: "../views/listview.html",
@@ -19,12 +20,13 @@ registrationApp.config(function($routeProvider)
 		templateUrl: "../views/listdetail.html",
 		controller: "listDetailController"
 	});
-	
+*/
 });
 
-registrationApp.controller('usersController', ['$scope', '$http', '$location', function($scope, $http, $location){
-	$scope.pageTitle = "Users";
+registrationApp.controller('loginController', ['$scope', '$http', '$location', function($scope, $http, $location){
+	$scope.pageTitle = "Login";
 
+    /*
     $http.get('resource/user').
         success(function(data, status, headers, config) {
             $scope.users = data;
@@ -36,6 +38,7 @@ registrationApp.controller('usersController', ['$scope', '$http', '$location', f
     $scope.displayListsForUser = function(userid) {
         /*resource/todolist/1*/
 
+    /*
         $location.path('/lists/' + userid);
     };
 
@@ -52,6 +55,7 @@ registrationApp.controller('usersController', ['$scope', '$http', '$location', f
             });
 
     };
+    */
 }]);
 
 registrationApp.controller('listsController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){

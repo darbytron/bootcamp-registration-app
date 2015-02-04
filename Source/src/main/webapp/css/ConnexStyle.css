@@ -1,0 +1,68 @@
+/*
+ menu styles
+ note: not all browsers render styles the same way so try out your style sheet
+ in different browsers before publishing
+*/
+
+/* level 0 inner */
+.m0l0iout {
+	font-family: Arial;
+	font-size: 11px;
+	text-decoration: none;
+	font-weight:bold;
+	margin: 5px 0 0 8px;
+	color: #515050;
+}
+.m0l0iover {
+	font-family: Arial;
+	font-size: 11px;
+	text-decoration: none;
+	font-weight:bold;
+	margin: 5px 0 0 8px;
+	color: #cb2425;
+}
+
+/* level 0 outer */
+.m0l0oout {
+	text-decoration : none;
+	background-image: url(img/lev0_bg1.gif);
+	border: 0px solid #336699;
+	background-color: #FFFFFF;
+}
+.m0l0oover {
+	text-decoration : none;
+	background-image: url(img/lev0_bg2.gif);
+	background-color: #FFFFFF;
+	border: 0px solid #336699;
+}
+
+/* level 1 inner */
+.m0l1iout {
+	font-family: Arial, Helvetica;
+	font-size: 11px;
+	margin: 4px 0 0 17px;
+	color: #000000;
+}
+.m0l1iover {
+	font-family: Arial, Helvetica;
+	font-size: 11px;
+	margin: 4px 0 0 17px;
+	color: #FFFFFF;
+}
+
+/* level 1 outer */
+.m0l1oout {
+	text-decoration : none;
+	background-color: #FFFFFF;
+	border: 1px solid #000000;
+	padding: 0;
+}
+.m0l1oover {
+	text-decoration : none;
+	background-color: #cb2425;
+	background-image: url(img/lev1_arrow.gif);
+	background-repeat: no-repeat;
+	background-position:left;
+	border: 1px solid #000000;
+	padding: 0;
+}@CHARSET "ISO-8859-1";

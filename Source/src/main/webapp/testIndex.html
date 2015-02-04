@@ -41,98 +41,58 @@ ul {
 
 				<!-- INSERT TEST CODE HERE -->
 
-				<table class="table table-condensed table-striped">
-					<thead>
-						<tr>
-							<td><label for="email">Email address</label></td>
-							<td><input type="email" class="form-control" id="email"
-								placeholder="user.email || Email" required {{user.emailReadOnly}}/></td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><label for="firstName">Name</label></td>
-							<td><input type="text" class="form-control" id="firstName"
-								placeholder="user.firstName" required /></td>
-						</tr>
-						<tr>
-							<td><label for="firstName">Middle Initial (Optional)</label></td>
-							<td><input type="text" class="form-control"
-								id="middleInitial" placeholder="user.middleInitial" required /></td>
-						</tr>
-						<tr>
-							<td><label for="firstName">Last Name</label></td>
-							<td><input type="text" class="form-control" id="lastName"
-								placeholder="user.lastName" required /></td>
-						</tr>
-						<tr>
-							<td><label for="homeAddress">Home address</label></td>
-							<td><input type="text" class="form-control" id="homeaddress"
-								placeholder="user.homeAddress" required /></td>
-						</tr>
-						<tr>
-							<td><label for="city">City</label></td>
-							<td><input type="text" class="form-control" id="city"
-								placeholder="user.city" required /></td>
-						</tr>
-						<tr>
-							<td><label for="state">State</label></td>
-							<td><input type="text" class="form-control" id="state"
-								placeholder="user.state" required /></td>
-						</tr>
-						<tr>
-							<td><label for="zip">Zip</label></td>
-							<td><input type="text" class="form-control" id="zip"
-								placeholder="user.zip" required /></td>
-						</tr>
-						<tr>
-							<td><label for="country">Country</label></td>
-							<td><input type="text" class="form-control" id="country"
-								placeholder="user.country" required /></td>
-						</tr>
-						<tr>
-							<td><label for="primaryPhone">Primary Phone Number</label></td>
-							<td><input type="tel" class="form-control" id="primaryPhone"
-								placeholder="user.primaryPhone" required /></td>
-						</tr>
-						<tr>
-							<td><label for="secondaryPhone">Secondary Phone
-									Number (optional)</label></td>
-							<td><input type="tel" class="form-control"
-								id="secondaryPhone" placeholder="user.secondaryPhone" /></td>
-						</tr>
-						<tr>
-							<td><label for="fax">Fax Number (optional)</label></td>
-							<td><input type="tel" class="form-control" id="fax"
-								placeholder="user.fax" /></td>
-						</tr>
-						<tr>
-							<td><label for="company">Company</label></td>
-							<td><input type="text" class="form-control" id="company"
-								placeholder="user.company" required /></td>
-						</tr>
-						<tr>
-							<td><label for="branch">Branch/Office Location
-									(optional)</label></td>
-							<td><input type="text" class="form-control" id="branch"
-								placeholder="user.branch" /></td>
-						</tr>
-						<tr>
-							<td><label for="notes">Additional information
-									(optional)</label></td>
-							<td><input type="text" class="form-control" id="notes"
-								placeholder="user.notes" /></td>
-						</tr>
-					</tbody>
-				</table>
+<div>
+    <form ng-submit="updateEvent()">
+        <div class="form-group">
+            <label for="event.title">Event title</label>
+            <input type="text" class="form-control" id="event.title" placeholder="Enter event title" required/>
+        </div>
 
-				<div class="case-box-wrapper">
-					<a href="menu.html">
-						<div class="case-box">SUBMIT</div>
-					</a>
-				</div>
+        <!-- NOTE: need to make a field to upload logo/image -->
+
+        <div class="form-group">
+            <label for="event.location">Event location</label>
+            <input type="text" class="form-control" id="event.lcoation" placeholder="Enter event location" required/>
+        </div>
 
 
+        <div class="row">
+            <div class='col-sm-3'>
+                <div class="form-group">
+                    <div class='input-group date' id='event.startdate'>
+                        <input type='text' class="form-control" placeholder="Begin date" />
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(function () {
+                    $('#event.startdate').datetimepicker();
+                });
+            </script>
+
+            <div class='col-sm-3'>
+                <div class="form-group">
+                    <div class='input-group date' id='event.enddate'>
+                        <input type='text' class="form-control" placeholder="End date" />
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(function () {
+                    $('#event.enddate').datetimepicker();
+                });
+            </script>
+
+        </div>
+
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
 
 				<!-- END TEST CODE -->
 

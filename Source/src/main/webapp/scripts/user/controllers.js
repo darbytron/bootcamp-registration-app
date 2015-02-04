@@ -1,6 +1,8 @@
+/*URL KEYS
+http://10.224.87.131:8080/Registration/resource/user/{userID}       Returns user information by user id.
+*/
 
-
-angular.module('app.user', ['ngRoute'])
+var user = angular.module('app.user', ['ngRoute'])
 
     //Configuration
     .config(function($routeProvider) {
@@ -13,7 +15,7 @@ angular.module('app.user', ['ngRoute'])
                 templateUrl : "../views/profile.html",
                 controller : "UpdateProfileController"
             })
-            .when("/user/", {
+            .when("/user", {
                 templateUrl : "../views/profile.html",
                 controller : "Registration Controller"
             })
@@ -22,8 +24,27 @@ angular.module('app.user', ['ngRoute'])
     //Controllers
 
     //Login Controller
-    .controller('UserLoginCntrl', ['$scope', '$location', function($scope, $location){
+    .controller('UserLoginCntrl', ['$scope', '$location', '$http', function($scope, $location, EmailService){
         $scope.pageTitle = "Login";
+
+        $scope.login = function(email) {
+
+
+            $http.post('ENTER LOGIN URL' , email).
+                success(function(data, status, headers, config) {
+
+                    if(data == null){
+                        console.log("New user, take to registration page");
+                        $location.path("/user");
+                        EmailService.setEmail(email);
+
+                    }
+
+                }).
+                error(function(data, status, headers, config) {
+                    console.log( status );
+                });
+        }
 
     }])
 
@@ -52,7 +73,26 @@ angular.module('app.user', ['ngRoute'])
 
     }])
 
-    .controller('RegistrationController', [ '$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
+    .controller('RegistrationController', [ '$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http, EmailService) {
         $scope.pageTitle = "Registration";
         $scope.user = {};
+        $scope.user.email = EmailService.getEmail();
+
+        $scope.submitRegistration = function () {
+            
+        }
     }]);
+
+
+user.service('EmailService', function() {
+    this.email = "";
+
+    this.setEmail = function(e) {
+        this.email = e;
+    };
+
+    this.getEmail = function(){
+        return this.email;
+    }
+
+});

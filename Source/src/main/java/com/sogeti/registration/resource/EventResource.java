@@ -1,23 +1,23 @@
 package com.sogeti.registration.resource;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-//import antlr.debug.Event;
-
-import com.sogeti.registration.beans.User;
 import com.sogeti.registration.beans.Event;
+//import antlr.debug.Event;
+import com.sogeti.registration.beans.User;
 import com.sogeti.registration.hibernate.HibernateUtil;
 import com.sogeti.registration.service.EventService;
-import com.sogeti.registration.service.UserService;
 
 @Path("event")
 public class EventResource 
@@ -62,28 +62,44 @@ public class EventResource
 		HibernateUtil.save( event );
 	}
 	
-	@DELETE
-	@Path("{id}")
-	public void deleteEvent(@PathParam("id") int id)
+//	@DELETE
+//	@Path("{id}")
+//	public void deleteEvent(@PathParam("id") int id)
+//	{
+//		try {
+//			EventService eventService = new EventService();
+//			eventService.deleteEvent(id);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+	
+	@PUT
+//	@Path("/event/add/{id}")
+	@Path("/add/{id}")
+	@Consumes(MediaType.TEXT_PLAIN)
+//	public void addUserToEvent(@PathParam("id") int eventid) throws Exception
+	public void addUserToEvent(@PathParam("id") int eventid, int userid) throws Exception
 	{
 		try {
 			EventService eventService = new EventService();
-			eventService.deleteEvent(id);
-		} catch (Exception e) {
+			Event event = eventService.getEvent(eventid);
+			Set<Integer> users = event.getUsers();
+			if(users == null)
+			{
+				users = new HashSet<Integer>();
+			}
+			users.add(userid);
+			event.setUsers(users);
+			eventService.updateEvent(event);
+			
+			System.out.println(event.getUsers());
+		} catch(Exception e) {
 			e.printStackTrace();
+			throw new Exception("Server error");
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	@GET
 	@Path("/event/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -96,13 +112,4 @@ public class EventResource
 		}
 		return null;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

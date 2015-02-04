@@ -6,15 +6,18 @@
 package com.sogeti.registration.beans;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name="EVENT")
@@ -22,9 +25,7 @@ public class Event
 {
 	private int id, ownerId, status;
 	private String title, desc, logoPath, location;
-
-	
-	private HashSet<User> users;
+	private Set<Integer> users;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -34,6 +35,18 @@ public class Event
 	
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinTable(name="EVENT_USERS",
+	joinColumns= @JoinColumn(name="EVENT_ID"),
+	inverseJoinColumns= @JoinColumn(name="USER_ID"))
+	public Set<Integer> getUsers() {
+		return users;
+	}
+	
+	public void setUsers(Set<Integer> users) {
+		this.users = users;
 	}
 	
 	@Column(name="intOwnerId")

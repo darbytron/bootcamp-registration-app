@@ -28,6 +28,17 @@ public class EventService
 		}
 	}
 	
+	public void updateEvent(Event event) throws Exception {
+		Session session = null;
+		
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			session.saveOrUpdate(event);
+		} finally {
+			session.close();
+		}
+	}
+	
 	public Event getEvent(int id) throws Exception {
 		Session session = null;
 		try {
@@ -54,15 +65,7 @@ public class EventService
 			session.close();
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	public List<User> getUsersForEvent(int id) {
 		Session session = null;
 		try {
@@ -79,14 +82,4 @@ public class EventService
 			session.close();
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

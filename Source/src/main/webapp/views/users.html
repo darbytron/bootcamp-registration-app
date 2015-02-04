@@ -1,0 +1,24 @@
+<h1>{{ pageTitle }}</h1>
+<ul>
+    <li ng-repeat="user in users">
+        <button type="button" class="btn btn-info" id="{{ user.id }}" ng-click="displayListsForUser( user.id )" >{{ user.firstName + " " + user.lastName }}</button>
+
+    </li>
+
+</ul>
+
+<div class="input-group">
+    <div class="row">
+        <form name="frm" ng-submit="addNewUser()">
+            <div class="col-md-5">
+                <input type="text" class="form-control" placeholder="First name" aria-describedby="basic-addon1" ng-model="firstName" required/>
+            </div>
+            <div class="col-md-5">
+                <input type="text" class="form-control" placeholder="Last name" aria-describedby="basic-addon1" ng-model="lastName" required/>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary" ng-disabled="frm.$invalid">Add</button>
+            </div>
+        </form>
+    </div>
+</div>

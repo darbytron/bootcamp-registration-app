@@ -4,6 +4,7 @@
  */
 package com.sogeti.registration.beans;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -26,7 +27,7 @@ public class User {
 	private String city, state, companyName, branchLocation, additionalInfo;
 	private String zip, phoneHome, phoneOffice, phoneCell;
 	private int id;
-	private Set<Event> events;
+	private HashSet<Integer> events;
 	
 //	@Id
 //	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -56,12 +57,12 @@ public class User {
 	@JoinTable(name="USER_EVENTS",
 	joinColumns= @JoinColumn(name="USER_ID"),
 	inverseJoinColumns= @JoinColumn(name="EVENT_ID"))
-	public Set<Event> getEvents()
+	public HashSet<Integer> getEvents()
 	{
 		return events;
 	}
 	
-	public void setEvents(Set<Event> events)
+	public void setEvents(HashSet<Integer> events)
 	{
 		this.events = events;
 	}

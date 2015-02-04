@@ -2,7 +2,7 @@
 http://10.224.87.131:8080/Registration/resource/user/{userID}       Returns user information by user id.
 */
 
-var user = angular.module('app.user', ['ngRoute'])
+var user = angular.module('Registration', ['ngRoute'])
 
     //Configuration
     .config(function($routeProvider) {

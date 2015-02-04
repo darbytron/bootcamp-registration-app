@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<ul>
+    <li ng-repeat="event in events">
+        <button type="button" class="btn btn-info" id="{{ event.id }}" ng-click="displayEvent( event.id )" >{{ event.name }}</button>
 
-</body>
-</html>
+    </li>
+
+</ul>

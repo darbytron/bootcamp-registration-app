@@ -2,7 +2,7 @@
 http://10.224.87.131:8080/Registration/resource/user/{userID}       Returns user information by user id.
 */
 
-var user = angular.module('Registration', ['ngRoute']);
+var user = angular.module('Registration', ['ngRoute', 'ngStorage']);
 
     //Configuration
 user.config(['$routeProvider', function($routeProvider) {
@@ -27,28 +27,34 @@ user.config(['$routeProvider', function($routeProvider) {
     //Controllers
 
     //Login Controller
-user.controller('UserLoginCntrl', ['$scope', '$location', '$http', function($scope, $location, $http){
+user.controller('UserLoginCntrl', ['$scope', '$location', '$http', '$localStorage', function($scope, $location, $http, EmailService, $localStorage){
+        if(!$scope.$storage){
+
+        }
+
+        $scope.$storage = $localStorage.$default({
+
+        });
         $scope.pageTitle = "Login";
 
         $scope.login = function(email) {
 
 
-            $http.post('ENTER LOGIN URL' , email).
-                success(function(data, status, headers, config) {
-
-                    if(data == null){
-                        console.log("New user, take to registration page");
-                        $location.path("/user");
-                        EmailService.setEmail(email);
-
-                    }
-
-                }).
-                error(function(data, status, headers, config) {
-                    console.log( status );
-                });
+            //$http.post('ENTER LOGIN URL' , email).
+            //    success(function(data, status, headers, config) {
+            //
+            //        if(data == null){
+            //            console.log("New user, take to registration page");
+            //            $location.path("/user");
+            //            EmailService.setEmail(email);
+            //
+            //        }
+            //
+            //    }).
+            //    error(function(data, status, headers, config) {
+            //        console.log( status );
+            //    });
         }
-
     }]);
 
     //Update Profile

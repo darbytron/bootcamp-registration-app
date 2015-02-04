@@ -15,7 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 
@@ -27,7 +27,7 @@ public class User {
 	private String city, state, companyName, branchLocation, additionalInfo;
 	private String zip, phoneHome, phoneOffice, phoneCell;
 	private int id;
-	private HashSet<Integer> events;
+//	private HashSet<Integer> events;
 	
 //	@Id
 //	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -53,19 +53,22 @@ public class User {
 		this.id = id;
 	}
 	
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinTable(name="USER_EVENTS",
-	joinColumns= @JoinColumn(name="USER_ID"),
-	inverseJoinColumns= @JoinColumn(name="EVENT_ID"))
-	public HashSet<Integer> getEvents()
-	{
-		return events;
-	}
-	
-	public void setEvents(HashSet<Integer> events)
-	{
-		this.events = events;
-	}
+//	@Column(name="events")
+////	@OneToMany(fetch = FetchType.EAGER)
+////	@JoinTable(name="USER_EVENTS",
+////	joinColumns= @JoinColumn(name="USER_ID"),
+////	inverseJoinColumns= @JoinColumn(name="EVENT_ID"))
+//    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Event.class)
+//    @JoinTable(name = "USER_EVENT", joinColumns = { @JoinColumn(name = "USER_ID") }, inverseJoinColumns = { @JoinColumn(name = "EVENT_ID") })
+//	
+//	private Set<Integer> events = new HashSet<Integer>();
+//	public Set<Integer> getUsers() {
+//		return events;
+//	}
+//	
+//	public void setUsers(Set<Integer> events) {
+//		this.events = events;
+//	}
 	
 	@Column(name="strZipCode")
 	public String getZip() {

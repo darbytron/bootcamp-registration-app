@@ -18,7 +18,7 @@ var user = angular.module('Registration', ['ngRoute'])
             .when("/user", {
                 templateUrl : "views/user/profile.html",
                 controller : "Registration Controller"
-            })
+            });
     }])
 
     //Controllers

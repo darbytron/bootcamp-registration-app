@@ -22,7 +22,7 @@ public class Event
 {
 	private int id, ownerId, status;
 	private String title, desc, logoPath, location;
-	//private boolean status;
+
 	
 	private HashSet<User> users;
 	
@@ -45,6 +45,7 @@ public class Event
 		this.ownerId = ownerId;
 	}
 	
+
 	@Column(name="intStatus")
 	public int getStatus() {
 		return status;

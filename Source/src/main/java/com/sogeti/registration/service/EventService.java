@@ -7,11 +7,11 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
-//import antlr.debug.Event;
 
-import com.sogeti.registration.beans.ToDoList;
 import com.sogeti.registration.beans.Event;
+
 import com.sogeti.registration.beans.User;
+
 import com.sogeti.registration.hibernate.HibernateUtil;
 
 public class EventService 
@@ -68,7 +68,7 @@ public class EventService
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			
-			Criteria criteria = session.createCriteria(ToDoList.class, "l");
+			Criteria criteria = session.createCriteria(Event.class, "l");
 			criteria.createAlias("l.users", "u");
 			criteria.add(Restrictions.eq("u.id", id));
 			criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);

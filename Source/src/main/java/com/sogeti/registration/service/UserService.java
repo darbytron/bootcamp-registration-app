@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
-import com.sogeti.registration.beans.ToDoList;
 import com.sogeti.registration.beans.Event;
 import com.sogeti.registration.beans.User;
 import com.sogeti.registration.hibernate.HibernateUtil;
@@ -51,20 +50,13 @@ public class UserService {
 			session.close();
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 	public List<User> getEventsForUser(int id) {
 		Session session = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			
-			Criteria criteria = session.createCriteria(ToDoList.class, "l");
+			Criteria criteria = session.createCriteria(Event.class, "l");
 			criteria.createAlias("l.users", "u");
 			criteria.add(Restrictions.eq("u.id", id));
 			criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);

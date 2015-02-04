@@ -5,7 +5,7 @@ http://10.224.87.131:8080/Registration/resource/user/{userID}       Returns user
 var user = angular.module('Registration', ['ngRoute'])
 
     //Configuration
-    .config(function($routeProvider) {
+    .config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when("/", {
                 templateUrl : "views/user/login.html",
@@ -19,7 +19,7 @@ var user = angular.module('Registration', ['ngRoute'])
                 templateUrl : "views/user/profile.html",
                 controller : "Registration Controller"
             })
-    })
+    }])
 
     //Controllers
 

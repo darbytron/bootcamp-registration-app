@@ -53,3 +53,10 @@ local.properties
 # TeXlipse plugin
 .texlipse
 
+Servers/Tomcat v7.0 Server at localhost-config/catalina.policy
+Servers/Tomcat v7.0 Server at localhost-config/catalina.properties
+Servers/Tomcat v7.0 Server at localhost-config/context.xml
+Servers/Tomcat v7.0 Server at localhost-config/server.xml
+Servers/Tomcat v7.0 Server at localhost-config/tomcat-users.xml
+Servers/Tomcat v7.0 Server at localhost-config/web.xml
+Source/target/classes/hibernate.cfg.xml

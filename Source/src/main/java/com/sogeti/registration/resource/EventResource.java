@@ -74,31 +74,31 @@ public class EventResource
 //		}
 //	}
 	
-	@PUT
-//	@Path("/event/add/{id}")
-	@Path("/add/{id}")
-	@Consumes(MediaType.TEXT_PLAIN)
-//	public void addUserToEvent(@PathParam("id") int eventid) throws Exception
-	public void addUserToEvent(@PathParam("id") int eventid, int userid) throws Exception
-	{
-		try {
-			EventService eventService = new EventService();
-			Event event = eventService.getEvent(eventid);
-			Set<Integer> users = event.getUsers();
-			if(users == null)
-			{
-				users = new HashSet<Integer>();
-			}
-			users.add(userid);
-			event.setUsers(users);
-			eventService.updateEvent(event);
-			
-			System.out.println(event.getUsers());
-		} catch(Exception e) {
-			e.printStackTrace();
-			throw new Exception("Server error");
-		}
-	}
+//	@PUT
+////	@Path("/event/add/{id}")
+//	@Path("/add/{id}")
+//	@Consumes(MediaType.TEXT_PLAIN)
+////	public void addUserToEvent(@PathParam("id") int eventid) throws Exception
+//	public void addUserToEvent(@PathParam("id") int eventid, int userid) throws Exception
+//	{
+//		try {
+//			EventService eventService = new EventService();
+//			Event event = eventService.getEvent(eventid);
+//			Set<Integer> users = event.getUsers();
+//			if(users == null)
+//			{
+//				users = new HashSet<Integer>();
+//			}
+//			users.add(userid);
+//			event.setUsers(users);
+//			eventService.updateEvent(event);
+//			
+//			System.out.println(event.getUsers());
+//		} catch(Exception e) {
+//			e.printStackTrace();
+//			throw new Exception("Server error");
+//		}
+//	}
 
 	@GET
 	@Path("/event/{id}")

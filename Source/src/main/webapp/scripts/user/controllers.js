@@ -1,29 +1,22 @@
 
-angular.module('app.user', [
-    'ngRoute',
-    '$scope',
-    '$http',
-    '$location',
-    'ngSubmit',
-    'ngRoute'
-])
+var profileApp = angular.module('app.user', ['ngRoute'])
 
     //Configuration
-    .config(function($routeProvider) {
+    .config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when("/", {
-                templateUrl : "../views/login.html",
+                templateUrl : "views/user/login.html",
                 controller : "UserLoginCntrl"
             })
             .when("/user/:userId", {
-                templateUrl : "../views/profile.html",
+                templateUrl : "views/user/profile.html",
                 controller : "UpdateProfileController"
             })
             .when("/user/", {
-                templateUrl : "../views/profile.html",
+                templateUrl : "../views/user/profile.html",
                 controller : "Registration Controller"
             })
-    })
+    }])
 
     //Controllers
 
@@ -34,7 +27,7 @@ angular.module('app.user', [
     }])
 
     //Update Profile
-    .controller('UpdateProfileController', [ '$scope', '$location', 'ngRoute', '$http', function($scope, $location, $routeParams, $http) {
+    .controller('UpdateProfileController', [ '$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
         $scope.pageTitle = "Profile";
         $scope.user = {};
 

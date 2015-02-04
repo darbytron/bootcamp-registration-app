@@ -1,6 +1,10 @@
 /**
  * Created by Alex on 2/3/15.
  */
+
+const SERVER_ADDRESS = "http://localhost:8080/Registration";
+//const SERVER_ADDRESS = "http://javabootcamp01.sgt.com:8080/Registration";
+
 var event = angular.module('Registration', ['ngRoute']);
 
 event.config(['$routeProvider', function($routeProvider) {
@@ -37,7 +41,7 @@ event.controller('EventViewController', [ '$scope', '$location', 'ngRoute', '$ht
 
 
         $scope.getEvent = function(eventId) {
-            $http.get('/resource/event/'+ eventId).
+            $http.get(SERVER_ADDRESS + '/resource/event/'+ eventId).
                 success(function(data) {
                     $scope.event = data;
                 }).

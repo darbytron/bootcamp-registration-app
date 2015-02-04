@@ -2,7 +2,7 @@
 http://10.224.87.131:8080/Registration/resource/user/{userID}       Returns user information by user id.
 */
 
-var user = angular.module('Registration', ['ngRoute', 'ngStorage']);
+var user = angular.module('Registration', ['ngRoute']);
 
     //Configuration
 user.config(['$routeProvider', function($routeProvider) {
@@ -27,17 +27,63 @@ user.config(['$routeProvider', function($routeProvider) {
     //Controllers
 
     //Login Controller
-user.controller('UserLoginCntrl', ['$scope', '$location', '$http', '$localStorage', function($scope, $location, $http, EmailService, $localStorage){
+user.controller('UserLoginCntrl', ['$scope', '$location', '$http', '$localStorage', function($scope, $location, $http, $localStorage, EmailService){
         if(!$scope.$storage){
+            $scope.$storage = $localStorage.$default({
+                users : [
+                    {
+                        "firstName": "Tim",
+                        "lastName": "Kelley",
+                        "email": "tkelley@email.com",
+                        "password" : "password",
+                        "address1" : "123 Road St",
+                        "address2" : "Suite 100",
+                        "city" : "Cincinnati",
+                        "state" : "OH",
+                        "companyName" : "Sogeti",
+                        "branchLocation" : "Cincinnati",
+                        "additionalInfo" : "I'm awesome",
+                        "zip" : "12345",
+                        "phoneHome" : "(513) 123 - 1234",
+                        "phoneOffice" : "(513) 456 - 7890",
+                        "phoneCell" : "(513) 111 - 2222"
+                    },
+                    {
+                        "firstName": "Tyler",
+                        "lastName": "Darby",
+                        "email": "me@tylerdarby.com",
+                        "password" : "password",
+                        "address1" : "2650 Knight Ave",
+                        "address2" : "",
+                        "city" : "Cincinnati",
+                        "state" : "OH",
+                        "companyName" : "Sogeti",
+                        "branchLocation" : "Cincinnati",
+                        "additionalInfo" : "I too am awesome",
+                        "zip" : "45212",
+                        "phoneHome" : "(513) 384 - 7816",
+                        "phoneOffice" : "(513) 555 - 6666",
+                        "phoneCell" : "(513) 563 - 4734"
+                    }
+                ],
+                events : {
 
+                }
+            });
         }
 
-        $scope.$storage = $localStorage.$default({
 
-        });
         $scope.pageTitle = "Login";
 
-        $scope.login = function(email) {
+        $scope.login = function() {
+
+            for ( user in $scope.$storage.users) {
+                if(user.email == $scope.email){
+                    alert("I'm going to go to profile page!")
+                    return;
+                }
+            }
+            alert("You need to register silly!");
 
 
             //$http.post('ENTER LOGIN URL' , email).

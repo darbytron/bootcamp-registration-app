@@ -2,15 +2,17 @@
 http://10.224.87.131:8080/Registration/resource/user/{userID}       Returns user information by user id.
 */
 
-var user = angular.module('Registration', ['ngRoute'])
+var user = angular.module('Registration', ['ngRoute']);
 
     //Configuration
-    .config(['$routeProvider', function($routeProvider) {
+user.config(['$routeProvider', function($routeProvider) {
+
         $routeProvider
             .when("/", {
                 templateUrl : "views/user/login.html",
                 controller : "UserLoginCntrl"
             })
+
             .when("/user/:userId", {
                 templateUrl : "views/user/profile.html",
                 controller : "UpdateProfileController"
@@ -19,12 +21,13 @@ var user = angular.module('Registration', ['ngRoute'])
                 templateUrl : "views/user/profile.html",
                 controller : "Registration Controller"
             });
-    }])
+
+    }]);
 
     //Controllers
 
     //Login Controller
-    .controller('UserLoginCntrl', ['$scope', '$location', '$http', function($scope, $location, EmailService){
+user.controller('UserLoginCntrl', ['$scope', '$location', '$http', function($scope, $location, EmailService){
         $scope.pageTitle = "Login";
 
         $scope.login = function(email) {
@@ -46,10 +49,10 @@ var user = angular.module('Registration', ['ngRoute'])
                 });
         }
 
-    }])
+    }]);
 
     //Update Profile
-    .controller('UpdateProfileController', [ '$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
+user.controller('UpdateProfileController', [ '$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
         $scope.pageTitle = "Profile";
         $scope.user = {};
 
@@ -71,9 +74,9 @@ var user = angular.module('Registration', ['ngRoute'])
 
         };
 
-    }])
+    }]);
 
-    .controller('RegistrationController', [ '$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http, EmailService) {
+user.controller('RegistrationController', [ '$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http, EmailService) {
         $scope.pageTitle = "Registration";
         $scope.user = {};
         $scope.user.email = EmailService.getEmail();

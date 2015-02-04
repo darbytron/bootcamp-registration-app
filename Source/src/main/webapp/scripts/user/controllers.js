@@ -8,15 +8,15 @@ var user = angular.module('app.user', ['ngRoute'])
     .config(function($routeProvider) {
         $routeProvider
             .when("/", {
-                templateUrl : "../views/login.html",
+                templateUrl : "views/login.html",
                 controller : "UserLoginCntrl"
             })
             .when("/user/:userId", {
-                templateUrl : "../views/profile.html",
+                templateUrl : "views/profile.html",
                 controller : "UpdateProfileController"
             })
             .when("/user", {
-                templateUrl : "../views/profile.html",
+                templateUrl : "views/profile.html",
                 controller : "Registration Controller"
             })
     })

@@ -1,13 +1,6 @@
 
 
-angular.module('app.user', [
-    'ngRoute',
-    '$scope',
-    '$http',
-    '$location',
-    'ngSubmit',
-    'ngRoute'
-])
+angular.module('app.user', ['ngRoute'])
 
     //Configuration
     .config(function($routeProvider) {
@@ -35,7 +28,7 @@ angular.module('app.user', [
     }])
 
     //Update Profile
-    .controller('UpdateProfileController', [ '$scope', '$location', 'ngRoute', '$http', function($scope, $location, $routeParams, $http) {
+    .controller('UpdateProfileController', [ '$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
         $scope.pageTitle = "Profile";
         $scope.user = {};
 
@@ -59,7 +52,7 @@ angular.module('app.user', [
 
     }])
 
-    .controller('RegistrationController', [ '$scope', '$location', 'ngRoute', '$http', function($scope, $location, $routeParams, $http) {
+    .controller('RegistrationController', [ '$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
         $scope.pageTitle = "Registration";
         $scope.user = {};
     }]);

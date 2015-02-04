@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html ng-app="registrationApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>EVENT MANAGEMENT SYSTEM</title>
+
+<!-- SCROLLS -->
+<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" /> -->
+<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" /> -->
+<link rel="stylesheet" type="text/css" href="css/SogetiStyle.css">
+
+
+<!-- SPELLS -->
+<!-- <script src="js/angular.min.js"></script> -->
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+
+
+<!--<script src="js/angular.min.js"></script>-->
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+<script src="scripts/app.js"></script>
+
+<style type="text/css">
+ul {
+	list-style: none;
+}
+</style>
+</head>
+<body>
+
+
+
+
+
+	<div id="main">
+		<div class="container">
+			<div ng-view>
+
+				<!-- INSERT TEST CODE HERE -->
+
+
+				<div>
+					<form ng-submit="updateProfile()">
+						<div class="form-group">
+							<label for="email">Email address</label> <input type="email"
+								class="form-control" id="email"
+								placeholder="user.email || Email" required {{user.emailReadOnly}}/>
+						</div>
+
+						<div class="form-group">
+							<label for="firstName">Name</label> <input type="text"
+								class="form-control" id="firstName" placeholder="user.firstName"
+								required />
+						</div>
+
+						<div class="form-group">
+							<input type="text" class="form-control" id="middleInitial"
+								placeholder="user.middleInitial" required />
+						</div>
+
+						<div class="form-group">
+							<input type="text" class="form-control" id="lastName"
+								placeholder="user.lastName" required />
+						</div>
+
+						<div class="form-group">
+							<label for="homeAddress">Home address</label> <input type="text"
+								class="form-control" id="homeaddress"
+								placeholder="user.homeAddress" required />
+						</div>
+
+						<div class="form-group">
+							<label for="city">City</label> <input type="text"
+								class="form-control" id="city" placeholder="user.city" required />
+						</div>
+
+						<!--Should be Selector-->
+						<div class="form-group">
+							<label for="state">State</label> <input type="text"
+								class="form-control" id="state" placeholder="user.state"
+								required />
+						</div>
+
+						<div class="form-group">
+							<label for="zip">Zip</label> <input type="text"
+								class="form-control" id="zip" placeholder="user.zip" required />
+						</div>
+
+						<div class="form-group">
+							<label for="country">Country</label> <input type="text"
+								class="form-control" id="country" placeholder="user.country"
+								required />
+						</div>
+
+						<div class="form-group">
+							<label for="primaryPhone">Primary Phone Number</label> <input
+								type="tel" class="form-control" id="primaryPhone"
+								placeholder="user.primaryPhone" required />
+						</div>
+
+						<div class="form-group">
+							<label for="secondaryPhone">Secondary Phone Number
+								(optional)</label> <input type="tel" class="form-control"
+								id="secondaryPhone" placeholder="user.secondaryPhone" />
+						</div>
+
+						<div class="form-group">
+							<label for="fax">Fax Number (optional)</label> <input type="tel"
+								class="form-control" id="fax" placeholder="user.fax" />
+						</div>
+
+						<div class="form-group">
+							<label for="company">Company</label> <input type="text"
+								class="form-control" id="company" placeholder="user.company"
+								required />
+						</div>
+
+						<div class="form-group">
+							<label for="branch">Branch/Office Location (optional)</label> <input
+								type="text" class="form-control" id="branch"
+								placeholder="user.branch" />
+						</div>
+
+						<div class="form-group">
+							<label for="notes">Additional information (optional)</label> <input
+								type="text" class="form-control" id="notes"
+								placeholder="user.notes" />
+						</div>
+
+						<div class="case-box-wrapper">
+							<a href="menu.html">
+								<div class="case-box">{{user.action}}</div>  <!-- TODO:  Change link -->
+							</a>
+					</form>
+				</div>
+
+
+
+				<!-- END TEST CODE -->
+
+			</div>
+
+			<script
+				src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+			<script
+				src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,45 +1,35 @@
 /**
  * Created by Alex on 2/3/15.
  */
+var event = angular.module('Registration', ['ngRoute']);
 
-angular.module('app.events', [
-    'ngRoute',
-    '$scope',
-    '$http',
-    '$location',
-    'ngSubmit',
-    'ngRoute'
-])
-
+event.config(['$routeProvider', function($routeProvider) {
     //Configuration
-    .config(function($routeProvider) {
-        $routeProvider
-            .when("/myevents", {
-                templateUrl : "views/events/listmyevents.html",
-                controller : "MyEventsController"
-            })
-            .when("/event/:eventId", {
-                templateUrl : "views/events/viewevent.html",
-                controller : "EventViewController"
-            })
-            /*
-            .when("/user/", {
-                templateUrl : "../views/profile.html",
-                controller : "Registration Controller"
-            })
-            */
-    })
+
+    $routeProvider
+        .when("/myevents", {
+            templateUrl : "views/events/listmyevents.html",
+            controller : "MyEventsController"
+        })
+        .when("/event/:eventId", {
+            templateUrl : "views/events/viewevent.html",
+            controller : "EventViewController"
+        });
+}]);
+
+
+
 
     //Controllers
 
     // My Events Controller
-    .controller('MyEventsController', ['$scope', '$location', function($scope, $location){
+event.controller('MyEventsController', ['$scope', '$location', function($scope, $location){
         $scope.pageTitle = "My Events";
 
-    }])
+    }]);
 
     // Event View Controller
-    .controller('EventViewController', [ '$scope', '$location', 'ngRoute', '$http', function($scope, $location, $routeParams, $http) {
+event.controller('EventViewController', [ '$scope', '$location', 'ngRoute', '$http', function($scope, $location, $routeParams, $http) {
         $scope.pageTitle = $scope.event.title;
         $scope.user = {};
 
@@ -56,8 +46,7 @@ angular.module('app.events', [
                 });
         };
 
-d
-    }])
+    }]);
 
     /*
     .controller('RegistrationController', [ '$scope', '$location', 'ngRoute', '$http', function($scope, $location, $routeParams, $http) {

@@ -27,7 +27,7 @@ user.config(['$routeProvider', function($routeProvider) {
     //Controllers
 
     //Login Controller
-user.controller('UserLoginCntrl', ['$scope', '$location', '$http', function($scope, $location, EmailService){
+user.controller('UserLoginCntrl', ['$scope', '$location', '$http', function($scope, $location, $http){
         $scope.pageTitle = "Login";
 
         $scope.login = function(email) {

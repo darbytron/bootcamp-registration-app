@@ -2,6 +2,28 @@
 *	Additions by Julie Rogers for New Hire Training Academy 2015 Capstone
 */
   
+ /* make sidebar nav vertical */ 
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+  }
+  .sidebar-nav .navbar ul:not {
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+  
   table {
 	width: auto !important;
 }
@@ -12,44 +34,6 @@
     width: auto;
 }
 
-@media {
-  .navbar-collapse {
-    width: auto;
-    border-top: 0;
-    box-shadow: none;
-    max-height: none;
-    padding-left:0;
-    padding-right:0;
-  }
-  .navbar-collapse.collapse {
-    display: block !important;
-    width: auto !important;
-    padding-bottom: 0;
-    overflow: visible !important;
-  }
-  .navbar-collapse.in {
-    overflow-x: visible;
-  }
-
-.navbar
-{
-	max-width:190px;
-	margin-right: 0;
-	margin-left: 0;
-}	
-
-.navbar-nav,
-.navbar-nav > li,
-.navbar-left,
-.navbar-right,
-.navbar-header
-{float:none !important;}
-
-.navbar-right .dropdown-menu {left:0;right:auto;}
-.navbar-collapse .navbar-nav.navbar-right:last-child {
-    margin-right: 0;
-}
-}
   
 /*
 *	End of additions

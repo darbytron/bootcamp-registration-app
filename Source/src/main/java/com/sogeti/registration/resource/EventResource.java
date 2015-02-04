@@ -11,9 +11,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import antlr.debug.Event;
+//import antlr.debug.Event;
 
 import com.sogeti.registration.beans.User;
+import com.sogeti.registration.beans.Event;
 import com.sogeti.registration.hibernate.HibernateUtil;
 import com.sogeti.registration.service.EventService;
 import com.sogeti.registration.service.UserService;

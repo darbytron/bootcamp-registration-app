@@ -7,9 +7,10 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
-import antlr.debug.Event;
+//import antlr.debug.Event;
 
 import com.sogeti.registration.beans.ToDoList;
+import com.sogeti.registration.beans.Event;
 import com.sogeti.registration.beans.User;
 import com.sogeti.registration.hibernate.HibernateUtil;
 

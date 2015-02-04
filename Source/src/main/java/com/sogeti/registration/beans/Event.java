@@ -20,9 +20,9 @@ import org.hibernate.annotations.Type;
 @Table(name="EVENT")
 public class Event 
 {
-	private int id, ownerId;
+	private int id, ownerId, status;
 	private String title, desc, logoPath, location;
-	private boolean status;
+	//private boolean status;
 	
 	private HashSet<User> users;
 	
@@ -45,15 +45,25 @@ public class Event
 		this.ownerId = ownerId;
 	}
 	
-	@Column(name="blnStatus")
-	@Type(type = "yes_no")
-	public boolean getStatus() {
+	@Column(name="intStatus")
+	public int getStatus() {
 		return status;
 	}
 	
-	public void setStatus(boolean status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
+	
+	
+//	@Column(name="blnStatus")
+//	@Type(type = "yes_no")
+//	public boolean getStatus() {
+//		return status;
+//	}
+//	
+//	public void setStatus(boolean status) {
+//		this.status = status;
+//	}
 	
 	@Column(name="strTitle")
 	public String getTitle() {

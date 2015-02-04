@@ -2,7 +2,7 @@
  * Created by Alex on 2/3/15.
  */
 
-angular.module('app.user', [
+angular.module('app.events', [
     'ngRoute',
     '$scope',
     '$http',
@@ -14,55 +14,55 @@ angular.module('app.user', [
     //Configuration
     .config(function($routeProvider) {
         $routeProvider
-            .when("/", {
-                templateUrl : "../views/login.html",
-                controller : "UserLoginCntrl"
+            .when("/myevents", {
+                templateUrl : "views/events/listmyevents.html",
+                controller : "MyEventsController"
             })
-            .when("/user/:userId", {
-                templateUrl : "../views/profile.html",
-                controller : "UpdateProfileController"
+            .when("/event/:eventId", {
+                templateUrl : "views/events/viewevent.html",
+                controller : "EventViewController"
             })
+            /*
             .when("/user/", {
                 templateUrl : "../views/profile.html",
                 controller : "Registration Controller"
             })
+            */
     })
 
     //Controllers
 
-    //Login Controller
-    .controller('UserLoginCntrl', ['$scope', '$location', function($scope, $location){
-        $scope.pageTitle = "Login";
+    // My Events Controller
+    .controller('MyEventsController', ['$scope', '$location', function($scope, $location){
+        $scope.pageTitle = "My Events";
 
     }])
 
-    //Update Profile
-    .controller('UpdateProfileController', [ '$scope', '$location', 'ngRoute', '$http', function($scope, $location, $routeParams, $http) {
-        $scope.pageTitle = "Profile";
+    // Event View Controller
+    .controller('EventViewController', [ '$scope', '$location', 'ngRoute', '$http', function($scope, $location, $routeParams, $http) {
+        $scope.pageTitle = $scope.event.title;
         $scope.user = {};
 
-        $scope.getUser($routeParams.userId);
+        $scope.getEvent($routeParams.eventId);
 
 
-        $scope.getUser = function(userId) {
-            $http.get('INSERT_GET_URL'+ userId).
+        $scope.getEvent = function(eventId) {
+            $http.get('/resource/event/'+ eventId).
                 success(function(data) {
-                    $scope.user = data;
+                    $scope.event = data;
                 }).
                 error(function(data, status) {
                     console.log("Failed to get information" + status);
                 });
         };
 
-
-        $scope.updateProfile = function() {
-
-        };
-
+d
     }])
 
+    /*
     .controller('RegistrationController', [ '$scope', '$location', 'ngRoute', '$http', function($scope, $location, $routeParams, $http) {
         $scope.pageTitle = "Registration";
         $scope.user = {};
     }]);
+    */
 

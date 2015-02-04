@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @Table(name="USER")
 public class User {
 		
-	private String username, password, firstName, lastName, address1, address2;
+	private String email, password, firstName, lastName, address1, address2;
 	private String city, state, companyName, branchLocation, additionalInfo;
 	private String zip, phoneHome, phoneOffice, phoneCell;
 	private int id;
@@ -102,13 +102,13 @@ public class User {
 		this.phoneCell = phoneCell;
 	}
 	
-	@Column(name="strUsername")
-	public String getUsername() {
-		return username;
+	@Column(name="strEmail")
+	public String getEmail() {
+		return email;
 	}
 	
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	@Column(name="strPassword")

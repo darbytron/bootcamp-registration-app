@@ -4,7 +4,16 @@
 <meta charset="ISO-8859-1">
 <title>Sogeti Event Management</title>
 
+<!-- SCROLLS -->
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/SogetiStyle.css">
 
+<!-- SPELLS -->
+<script	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+<script	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+
+<script src="scripts/user/controllers.js"></script>
+<!--<script src="scripts/events/controllers.js"></script>-->
 
 <!-- MAY NOT BE NEEDED -->
 <style type="text/css">
@@ -19,8 +28,10 @@ ul {
 
 <!-- SOGETI LOGO -->
 	<div>
+	<h1>
 		<a href="http://www.sogeti.com/"><img
 			src="http://www.sogeti.com/Static/img/logo.png" alt="Sogeti Logo" /></a>
+			</h1>
 	</div>
 <!-- END LOGO -->
 
@@ -52,25 +63,18 @@ ul {
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- END NAVBAR -->
-
-	<!-- MAIN CONTENT IS INJECTED INTO ng-view  -->
-	<div id="main">
+		<!-- MAIN CONTENT IS INJECTED INTO ng-view  -->
+	<div class="col-sm-6" id="main">
 		<div class="container">
 			<div ng-view></div>
 		</div>
 	</div>
-<!-- SCROLLS -->
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="css/SogetiStyle.css">
+	<!-- END MAIN CONTENT -->
 
-<!-- SPELLS -->
-<script	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-<script	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+	</div>
+	<!-- END NAVBAR -->
 
-<script src="scripts/user/controllers.js"></script>
-<!--<script src="scripts/events/controllers.js"></script>-->
+
 
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
 <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->

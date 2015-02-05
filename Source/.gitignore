@@ -54,3 +54,10 @@ local.properties
 .texlipse
 
 /target/
+
+.idea
+.idea/*
+
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+**/.idea/misc.xml

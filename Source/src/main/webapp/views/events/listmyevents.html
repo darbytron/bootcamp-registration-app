@@ -1,9 +1,12 @@
-<ul>
-    <li ng-repeat="event in events">
-        <button type="button" class="btn btn-info" id="{{ event.id }}" ng-click="displayEvent( event.id )" >{{ event.name }}</button>
 
-    </li>
 
-</ul>
+    <div class="row">
 
-<h1>list events page</h1>
+        <div ng-repeat="event in events">
+            <button type="button" class="btn btn-info btn-lg btn-block" id="{{ event.id }}" ng-click="displayEvent( event.id )" >
+                <span class="glyphicon glyphicon-align-left glyphicon glyphicon-calendar" aria-hidden="true"></span> {{event.title}}
+            </button>
+        </div>
+
+    </div>
+

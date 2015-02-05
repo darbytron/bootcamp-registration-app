@@ -22,6 +22,7 @@ public class Event
 	private int id, ownerId, status;
 	private String title, desc, logoPath, location;
 	private List<User> users;
+	private String type, category, startDate, endDate;
 //	private User owner = null;
 	
 	@Id
@@ -59,6 +60,24 @@ public class Event
 //		this.owner = owner;
 //	}
 	
+	@Column(name="strStartDate")
+	public String getStartDate() {
+		return startDate;
+	}
+	
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	
+	@Column(name="strEndDate")
+	public String getEndDate() {
+		return endDate;
+	}
+	
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+	
 	@Column(name="intOwnerId")
 	public int getOwnerId() {
 		return ownerId;
@@ -68,6 +87,23 @@ public class Event
 		this.ownerId = ownerId;
 	}
 	
+	@Column(name="strType")
+	public String getType() {
+		return type;
+	}
+	
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	@Column(name="strCategory")
+	public String getCategory() {
+		return category;
+	}
+	
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
 	@Column(name="intStatus")
 	public int getStatus() {

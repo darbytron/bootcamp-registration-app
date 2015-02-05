@@ -26,6 +26,7 @@ public class User {
 	private String email, password, firstName, lastName, address1, address2;
 	private String city, state, companyName, branchLocation, additionalInfo;
 	private String zip, phoneHome, phoneOffice, phoneCell;
+	private String food;
 	private int id;
 //	private HashSet<Integer> events;
 	
@@ -69,6 +70,15 @@ public class User {
 //	public void setUsers(Set<Integer> events) {
 //		this.events = events;
 //	}
+	
+	@Column(name="strFood")
+	public String getFood() {
+		return food;
+	}
+	
+	public void setFood(String food) {
+		this.food = food;
+	}
 	
 	@Column(name="strZipCode")
 	public String getZip() {

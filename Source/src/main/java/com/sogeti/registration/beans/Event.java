@@ -5,14 +5,17 @@
 
 package com.sogeti.registration.beans;
 
-import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +24,7 @@ public class Event
 {
 	private int id, ownerId, status;
 	private String title, desc, logoPath, location;
-	private List<User> users;
+	private Set<User> users;
 	private String type, category, startDate, endDate;
 //	private User owner = null;
 	
@@ -94,6 +97,17 @@ public class Event
 	
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name="EVENT_USERS",
+	joinColumns= @JoinColumn(name="EVENT_ID"),
+	inverseJoinColumns= @JoinColumn(name="USER_ID"))
+	public Set<User> getUsers() {
+		return users;
+	}
+	public void setUsers(Set<User> users) {
+		this.users = users;
 	}
 	
 	@Column(name="strCategory")

@@ -1,0 +1,71 @@
+
+<!-- Requirements
+•	First name
+•	Middle initial
+•	Last name (required)
+•	Home Street Address (required)
+•	Home City, State, Postal Code, Country (required)
+•	Primary Phone Number (required)
+•	Secondary Phone Number (optional)
+•	FAX number (optional)
+•	Primary Email Address (required)
+•	Secondary Email Address (optional)
+•	Company Name (required)
+•	Branch Office/Location (optional)
+•	Additional Text Info (optional)
+
+-->
+
+<div class="panel panel-primary">
+    <div class="panel-heading">User Profile</div>
+    <div class="panel-body">
+        Panel content
+    </div>
+
+    <table class="table table-striped">
+        <!--<thead></thead>-->
+        <tbody>
+
+        <tr>
+            <td><strong>Name</strong></td>
+            <td>{{user.firstName}} {{user.lastName}}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Email address</strong></td>
+            <td>{{user.email}}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Address</strong></td>
+            <td>{{user.homeAddress}}<br />{{user.city}}, {{user.state}} {{user.zip}}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Country</strong></td>
+            <td>{{user.country}}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Phone number(s)</strong></td>
+            <td>{{user.primaryPhone}}<br />{{user.secondaryPhone}}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Company</strong></td>
+            <td>{{user.company}}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Office branch</strong></td>
+            <td>{{user.branch}}</td>
+        </tr>
+        <tr>
+            <td><strong>Additional information</strong></td>
+            <td>{{user.notes}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="panel-footer">
+        <button class="btn btn-primary">Edit</button></div>
+</div>

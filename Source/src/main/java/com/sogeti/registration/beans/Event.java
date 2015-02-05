@@ -5,18 +5,14 @@
 
 package com.sogeti.registration.beans;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,7 +21,8 @@ public class Event
 {
 	private int id, ownerId, status;
 	private String title, desc, logoPath, location;
-	private Set<Integer> users;
+	private List<User> users;
+//	private User owner = null;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -37,17 +34,30 @@ public class Event
 		this.id = id;
 	}
 	
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinTable(name="EVENT_USERS",
-	joinColumns= @JoinColumn(name="EVENT_ID"),
-	inverseJoinColumns= @JoinColumn(name="USER_ID"))
-	public Set<Integer> getUsers() {
-		return users;
-	}
+//	@Column(name="users")
+////	@OneToMany(fetch = FetchType.EAGER)
+////	@JoinTable(name="EVENT_USERS",
+////	joinColumns= @JoinColumn(name="EVENT_ID"),
+////	inverseJoinColumns= @JoinColumn(name="USER_ID"))
+//	@ManyToMany(fetch = FetchType.EAGER, targetEntity = User.class)
+//    @JoinTable(name = "EVENT_USER", joinColumns = { @JoinColumn(name = "EVENT_ID") }, inverseJoinColumns = { @JoinColumn(name = "USER_ID") })
+//	
+//	private Set<Integer> users = new HashSet<Integer>();
+//	public Set<Integer> getUsers() {
+//		return users;
+//	}
+//	
+//	public void setUsers(Set<Integer> users) {
+//		this.users = users;
+//	}
 	
-	public void setUsers(Set<Integer> users) {
-		this.users = users;
-	}
+//	public User getOwner() {
+//		return owner;
+//	}
+//	
+//	public void setOwner(User owner) {
+//		this.owner = owner;
+//	}
 	
 	@Column(name="intOwnerId")
 	public int getOwnerId() {

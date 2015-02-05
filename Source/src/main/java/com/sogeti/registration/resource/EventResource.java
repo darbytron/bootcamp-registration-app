@@ -1,5 +1,6 @@
 package com.sogeti.registration.resource;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,8 +17,11 @@ import javax.ws.rs.core.MediaType;
 import com.sogeti.registration.beans.Event;
 //import antlr.debug.Event;
 import com.sogeti.registration.beans.User;
+import com.sogeti.registration.beans.UserEvent;
 import com.sogeti.registration.hibernate.HibernateUtil;
 import com.sogeti.registration.service.EventService;
+import com.sogeti.registration.service.UserEventService;
+import com.sogeti.registration.service.UserService;
 
 @Path("event")
 public class EventResource 
@@ -30,7 +34,16 @@ public class EventResource
 		
 		try {
 			EventService eventService = new EventService();
+//			UserService userv = new UserService();
+//			
+//			for(Event event : eventService.getEvents())
+//			{
+//				User user = userv.getUser(event.getOwnerId());
+//				event.setOwner(user);
+//			}
+
 			return eventService.getEvents();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -45,7 +58,12 @@ public class EventResource
 
 		try {
 			EventService eventService = new EventService();
-			return eventService.getEvent(id);
+			Event event = eventService.getEvent(id);
+//			UserService ues = new UserService();
+//			User user = ues.getUser(event.getOwnerId());
+//			event.setOwner(user);
+			
+			return event;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -59,6 +77,8 @@ public class EventResource
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void createEvent(Event event)
 	{
+//		event.getId()
+//		event.getOwnerId()
 		HibernateUtil.save( event );
 	}
 	
@@ -82,18 +102,39 @@ public class EventResource
 	public void addUserToEvent(@PathParam("id") int eventid, int userid) throws Exception
 	{
 		try {
-			EventService eventService = new EventService();
-			Event event = eventService.getEvent(eventid);
-			Set<Integer> users = event.getUsers();
-			if(users == null)
-			{
-				users = new HashSet<Integer>();
-			}
-			users.add(userid);
-			event.setUsers(users);
-			eventService.updateEvent(event);
+			UserEventService ues = new UserEventService();
+			List<UserEvent> userEvent = ues.getUserEvents();
 			
-			System.out.println(event.getUsers());
+			UserEvent temp = new UserEvent();
+			temp.setEventId(eventid);
+			temp.setUserId(userid);
+			userEvent.add(temp);
+			
+			HibernateUtil.save(temp);
+//			UserService userService = new UserService();
+//			List<User> eventUserIds = new ArrayList<User>();
+//			
+//			for(UserEvent event : userEvent)
+//			{
+//				if(event.getEventId() == eventid)
+//				{
+//					User user = userService.getUser(event.getUserId());
+//					eventUserIds.add(user);
+//				}
+//			}
+			
+//			EventService eventService = new EventService();
+//			Event event = eventService.getEvent(eventid);
+//			Set<Integer> users = event.getUsers();
+//			if(users == null)
+//			{
+//				users = new HashSet<Integer>();
+//			}
+//			users.add(userid);
+//			event.setUsers(users);
+//			eventService.updateEvent(event);
+//			
+//			System.out.println(event.getUsers());
 		} catch(Exception e) {
 			e.printStackTrace();
 			throw new Exception("Server error");

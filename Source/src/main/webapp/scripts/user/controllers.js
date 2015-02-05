@@ -1,11 +1,13 @@
-/*URL KEYS
-http://10.224.87.131:8080/Registration/resource/user/{userID}       Returns user information by user id.
-*/
-
+//URL KEYS
+var URL = {
+    userById :  "http://10.224.87.131:8080/Registration/resource/user/{userID}",
+    userByEmail : "http://10.224.87.131:8080"
+}
 var user = angular.module('Registration', ['ngRoute']);
 
-    //Configuration
-user.config(['$routeProvider', function($routeProvider) {
+
+
+user.config(function($routeProvider) {
 
         $routeProvider
             .when("/", {
@@ -22,121 +24,7 @@ user.config(['$routeProvider', function($routeProvider) {
                 controller : "Registration Controller"
             });
 
-    }]);
-
-    //Controllers
-
-    //Login Controller
-user.controller('UserLoginCntrl', ['$scope', '$location', '$http', '$localStorage', function($scope, $location, $http, $localStorage, EmailService){
-        if(!$scope.$storage){
-            $scope.$storage = $localStorage.$default({
-                users : [
-                    {
-                        "firstName": "Tim",
-                        "lastName": "Kelley",
-                        "email": "tkelley@email.com",
-                        "password" : "password",
-                        "address1" : "123 Road St",
-                        "address2" : "Suite 100",
-                        "city" : "Cincinnati",
-                        "state" : "OH",
-                        "companyName" : "Sogeti",
-                        "branchLocation" : "Cincinnati",
-                        "additionalInfo" : "I'm awesome",
-                        "zip" : "12345",
-                        "phoneHome" : "(513) 123 - 1234",
-                        "phoneOffice" : "(513) 456 - 7890",
-                        "phoneCell" : "(513) 111 - 2222"
-                    },
-                    {
-                        "firstName": "Tyler",
-                        "lastName": "Darby",
-                        "email": "me@tylerdarby.com",
-                        "password" : "password",
-                        "address1" : "2650 Knight Ave",
-                        "address2" : "",
-                        "city" : "Cincinnati",
-                        "state" : "OH",
-                        "companyName" : "Sogeti",
-                        "branchLocation" : "Cincinnati",
-                        "additionalInfo" : "I too am awesome",
-                        "zip" : "45212",
-                        "phoneHome" : "(513) 384 - 7816",
-                        "phoneOffice" : "(513) 555 - 6666",
-                        "phoneCell" : "(513) 563 - 4734"
-                    }
-                ],
-                events : {
-
-                }
-            });
-        }
-
-
-        $scope.pageTitle = "Login";
-
-        $scope.login = function() {
-
-            for ( user in $scope.$storage.users) {
-                if(user.email == $scope.email){
-                    alert("I'm going to go to profile page!")
-                    return;
-                }
-            }
-            alert("You need to register silly!");
-
-
-            //$http.post('ENTER LOGIN URL' , email).
-            //    success(function(data, status, headers, config) {
-            //
-            //        if(data == null){
-            //            console.log("New user, take to registration page");
-            //            $location.path("/user");
-            //            EmailService.setEmail(email);
-            //
-            //        }
-            //
-            //    }).
-            //    error(function(data, status, headers, config) {
-            //        console.log( status );
-            //    });
-        }
-    }]);
-
-    //Update Profile
-user.controller('UpdateProfileController', [ '$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
-        $scope.pageTitle = "Profile";
-        $scope.user = {};
-
-        $scope.getUser($routeParams.userId);
-
-
-        $scope.getUser = function(userId) {
-            $http.get('INSERT_GET_URL'+ userId).
-                success(function(data) {
-                    $scope.user = data;
-                }).
-                error(function(data, status) {
-                    console.log("Failed to get information" + status);
-                });
-        };
-
-
-        $scope.updateProfile = function() {
-
-        };
-
-    }]);
-
-user.controller('RegistrationController', [ '$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http, EmailService) {
-        $scope.pageTitle = "Registration";
-        $scope.user = {};
-        $scope.user.email = EmailService.getEmail();
-
-        $scope.submitRegistration = function () {
-            
-        }
-    }]);
+    });
 
 
 user.service('EmailService', function() {
@@ -151,3 +39,69 @@ user.service('EmailService', function() {
     }
 
 });
+
+    //Controllers
+
+    //Login Controller
+user.controller('UserLoginCntrl', ['$scope', '$location', '$http', 'EmailService', function($scope, $location, $http, EmailService){
+
+
+        $scope.pageTitle = "Login";
+
+        $scope.login = function() {
+
+
+            $http.post(URL.userByEmail , email).
+                success(function(data, status, headers, config) {
+
+                    if(data == null){
+                        console.log("New user, take to registration page");
+                        $location.path("/user");
+                        EmailService.setEmail(email);
+
+                    }
+
+                }).
+                error(function(data, status, headers, config) {
+                    console.log( status );
+                });
+        }
+    }]);
+
+    //Update Profile
+//user.controller('UpdateProfileController', [ '$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
+//        $scope.pageTitle = "Profile";
+//        $scope.user = {};
+//
+//        $scope.getUser($routeParams.userId);
+//
+//
+//        $scope.getUser = function(userId) {
+//            $http.get('INSERT_GET_URL'+ userId).
+//                success(function(data) {
+//                    $scope.user = data;
+//                }).
+//                error(function(data, status) {
+//                    console.log("Failed to get information" + status);
+//                });
+//        };
+//
+//
+//        $scope.updateProfile = function() {
+//
+//        };
+//
+//    }]);
+//
+//user.controller('RegistrationController', [ '$scope', '$location', '$routeParams', '$http', 'EmailService', function($scope, $location, $routeParams, $http, EmailService) {
+//        $scope.pageTitle = "Registration";
+//        $scope.user = {};
+//        $scope.user.email = EmailService.getEmail();
+//
+//        $scope.submitRegistration = function () {
+//
+//        }
+//    }]);
+
+
+

@@ -1,7 +1,11 @@
 /*
 *	Additions by Julie Rogers for New Hire Training Academy 2015 Capstone
 */
-  
+ 
+body {
+    overflow-x: hidden;
+}
+
  /* make sidebar nav vertical */ 
 @media (min-width: 768px) {
   .sidebar-nav .navbar .navbar-collapse {

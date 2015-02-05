@@ -3,7 +3,7 @@
     <div class="row">
 
         <div ng-repeat="event in events">
-            <button type="button" class="btn btn-info btn-lg btn-block" id="{{ event.id }}" ng-click="displayEvent( event.id )" >
+            <button type="button" class="btn btn-lg btn-block" id="{{ event.id }}" ng-click="displayEvent( event.id )" >
                 <span class="glyphicon glyphicon-align-left glyphicon glyphicon-calendar" aria-hidden="true"></span> {{event.title}}
             </button>
         </div>

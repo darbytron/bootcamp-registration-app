@@ -2,7 +2,7 @@
 *	Additions by Julie Rogers for New Hire Training Academy 2015 Capstone
 */
  .myPanelHeading {
-    color: #fff;
+    color: #fff !important;
     background-color: #ee4427 !important;
     border-color: #ee4427 !important;
 }
@@ -35,10 +35,6 @@ body {
     padding-top: 12px;
     padding-bottom: 12px;
   }
-}
-  
-  table {
-	width: auto !important;
 }
 
 .myCenter {

@@ -1,7 +1,16 @@
 /*
 *	Additions by Julie Rogers for New Hire Training Academy 2015 Capstone
 */
- 
+ .myPanelHeading {
+    color: #fff;
+    background-color: #ee4427 !important;
+    border-color: #ee4427 !important;
+}
+
+.myPanel {
+    border-color: #ee4427 !important;
+}
+
 body {
     overflow-x: hidden;
 }
@@ -657,8 +666,7 @@ button {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-	background-color: #00c5ad;
-	box-shadow: 0px 3px 0px 0px #00ab94;
+	background-color: #ee4427 !important;
 	
 	cursor: pointer;
 }
@@ -738,7 +746,7 @@ button,
 input,
 select,
 textarea {
-    color: #222;
+    color: #FFF;
 }
 
 html {

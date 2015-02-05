@@ -9,31 +9,9 @@ var URL_LOCAL = {
     userByEmail : "http://localhost:8080/Registration/resource/user/login",
     createUser : "http://localhost:8080/Registration/resource/user"
 };
-var user = angular.module('Registration', ['ngRoute']);
+angular.module('app.user', []);
 
-
-
-user.config(function($routeProvider) {
-
-        $routeProvider
-            .when("/", {
-                templateUrl : "views/user/login.html",
-                controller : "UserLoginCntrl"
-            })
-
-            .when("/user/:userId", {
-                templateUrl : "views/user/profile.html",
-                controller : "UpdateProfileController"
-            })
-            .when("/user", {
-                templateUrl : "views/user/profile.html",
-                controller : "RegistrationController"
-            });
-
-    });
-
-
-user.service('EmailService', function() {
+angular.module('app.user').service('EmailService', function() {
     this.email = "";
 
     this.setEmail = function(e) {
@@ -44,12 +22,12 @@ user.service('EmailService', function() {
         return this.email;
     }
 
-});
+})
 
     //Controllers
 
     //Login Controller
-user.controller('UserLoginCntrl', ['$scope', '$location', '$http', 'EmailService', function($scope, $location, $http, EmailService){
+    .controller('UserLoginCntrl', ['$scope', '$location', '$http', 'EmailService', function($scope, $location, $http, EmailService){
 
 
         $scope.pageTitle = "Login";
@@ -80,7 +58,7 @@ user.controller('UserLoginCntrl', ['$scope', '$location', '$http', 'EmailService
             });
 
         }
-    }]);
+    }])
 
     //Update Profile
 //user.controller('UpdateProfileController', [ '$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
@@ -107,7 +85,7 @@ user.controller('UserLoginCntrl', ['$scope', '$location', '$http', 'EmailService
 //
 //    }]);
 //
-user.controller('RegistrationController', [ '$scope', '$location', '$routeParams', '$http', 'EmailService', function($scope, $location, $routeParams, $http, EmailService) {
+    .controller('RegistrationController', [ '$scope', '$location', '$http', 'EmailService', function($scope, $location, $http, EmailService) {
         $scope.pageTitle = "Registration";
 
         $scope.user.email = EmailService.getEmail();

@@ -5,41 +5,7 @@
 const SERVER_ADDRESS = "http://localhost:8080/Registration";
 //const SERVER_ADDRESS = "http://javabootcamp01.sgt.com:8080/Registration";
 
-var event = angular.module('Registration', ['ngRoute']);
-
-event.config(['$routeProvider', function($routeProvider) {
-    //Configuration
-
-    $routeProvider
-        .when("/myevents", {
-            templateUrl : "views/events/listmyevents.html",
-            controller : "MyEventsController"
-        })
-        .when("/event/view/:eventId", {
-            templateUrl : "views/events/viewevent.html",
-            controller : "EventViewController"
-        })
-        .when("/event/edit/:eventId", {
-            templateUrl : "views/events/editevent.html",
-            controller : "EditEventController"
-        })
-        .when("/event/new", {
-            templateUrl : "views/events/editevent.html",
-            controller : "EditEventController"
-        })
-        // The same controller will be used for editing and creating
-
-        /*
-        .when("/event/new", {
-            templateURL : "views/events/editevent.html",
-            controller : "EditEventController"
-        })
-         */
-        .otherwise({redirectTo: '/'});
-}]);
-
-
-
+angular.module('app.event', ['ngRoute']);
 
 
 
@@ -47,14 +13,14 @@ event.config(['$routeProvider', function($routeProvider) {
     //Controllers
 
     // My Events Controller
-event.controller('MyEventsController', ['$scope', '$location', function($scope, $location){
+angular.module('app.event').controller('MyEventsController', ['$scope', '$location', function($scope, $location){
         $scope.pageTitle = "My Events";
 
 
-    }]);
+    }])
 
     // Event View Controller
-event.controller('EventViewController', [ '$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
+.controller('EventViewController', [ '$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
 
         $scope.event = {
             "id" : 1,
@@ -91,7 +57,7 @@ event.controller('EventViewController', [ '$scope', '$location', '$routeParams',
                 });
         };
 
-    }]);
+    }])
 
 
     /*
@@ -101,7 +67,7 @@ event.controller('EventViewController', [ '$scope', '$location', '$routeParams',
     }]);
     */
 
-event.controller('EditEventController', ['$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http){
+.controller('EditEventController', ['$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http){
 
 
 

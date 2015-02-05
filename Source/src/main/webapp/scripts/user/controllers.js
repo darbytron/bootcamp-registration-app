@@ -63,23 +63,31 @@ angular.module('app.user').service('EmailService', function() {
 
     .controller('EditProfileController', [ '$scope', '$location', '$http', 'EmailService', '$routeParams', function($scope, $location, $http, EmailService, $routeParams) {
 
-        $scope.pageConfig.emailReadOnly = "";
+        $scope.user = {};
+        $scope.pageConfig = {
+            emailReadOnly: "",
+            panelTitle: ""
+        };
+
+
         if ($routeParams.userId != null)
         {
-                $scope.pageConfig.emailReadOnly = "readonly";
+            $scope.pageConfig.emailReadOnly = "readonly";
+            $scope.pageConfig.panelTitle = "Edit Profile";
 
-                $http.get(URL.userById + $routeParams.userId).
-                    success(function(data) {
-                        $scope.user = data;
-                    }).
-                    error(function(data, status) {
-                        console.log("Failed to get information" + status);
-                        alert("Something went wrong :(");
-                    });
+            $http.get(URL.userById + $routeParams.userId).
+                success(function(data) {
+                    $scope.user = data;
+                }).
+                error(function(data, status) {
+                    console.log("Failed to get information" + status);
+                    alert("Something went wrong :(");
+                });
 
         }
         else
         {
+            $scope.pageConfig.panelTitle = "Register Account";
             $scope.user.email = EmailService.getEmail();
         }
 
@@ -134,25 +142,25 @@ angular.module('app.user').service('EmailService', function() {
     //    }
     //}])
 
-.controller('ViewProfileController', [ '$scope', '$location', '$http', 'EmailService', function($scope, $location, $http, EmailService) {
-    //$scope.pageTitle = "Registration";
+    .controller('ViewProfileController', [ '$scope', '$location', '$http', 'EmailService', function($scope, $location, $http, EmailService) {
+        //$scope.pageTitle = "Registration";
 
-    //$scope.user.email = EmailService.getEmail();
+        //$scope.user.email = EmailService.getEmail();
 
 
-    $scope.user = {
-        "firstName": "Alex",
-        "lastName": "Krebiehl",
-        "email" : "alex@krebiehl.com",
-        "homeAddress": "50 Hidden Valley Dr #51",
-        "city": "Highland Heights",
-        "state": "KY",
-        "zip": "41076",
-        "country": "United States",
-        "primaryPhone": "(513) 418-1163",
-        "secondaryPhone": ""
-    };
-}]);
+        $scope.user = {
+            "firstName": "Alex",
+            "lastName": "Krebiehl",
+            "email" : "alex@krebiehl.com",
+            "homeAddress": "50 Hidden Valley Dr #51",
+            "city": "Highland Heights",
+            "state": "KY",
+            "zip": "41076",
+            "country": "United States",
+            "primaryPhone": "(513) 418-1163",
+            "secondaryPhone": ""
+        };
+    }]);
 
 
 //USER MODEL

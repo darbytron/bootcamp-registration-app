@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -28,6 +29,7 @@ public class User {
 	private String zip, phoneHome, phoneOffice, phoneCell;
 	private String food;
 	private int id;
+	private Set<Event> events;
 //	private HashSet<Integer> events;
 	
 //	@Id
@@ -52,6 +54,17 @@ public class User {
 	
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name="USER_EVENT",
+	joinColumns= @JoinColumn(name="USER_ID"),
+	inverseJoinColumns= @JoinColumn(name="EVENT_ID"))
+	public Set<Event> getEvents() {
+		return this.events;
+	}
+	public void setEvents(Set<Event> events) {
+		this.events = events;
 	}
 	
 //	@Column(name="events")

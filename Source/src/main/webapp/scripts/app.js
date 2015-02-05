@@ -8,13 +8,17 @@ angular.module('app', ['ngRoute', 'app.user', 'app.event'])
                 templateUrl : "views/user/login.html",
                 controller : "UserLoginCntrl"
             })
-            .when("/user/:userId", {
-                templateUrl : "views/user/profile.html",
-                controller : "UpdateProfileController"
+            .when("/user/edit/:userId", {
+                templateUrl : "views/user/updateprofile.html",
+                controller : "EditProfileController"
             })
-            .when("/user", {
-                templateUrl : "views/user/profile.html",
-                controller : "RegistrationController"
+            .when("/user/view/:userId", {
+                templateUrl : "views/user/viewprofile.html",
+                controller : "ViewProfileController"
+            })
+            .when("/register", {
+                templateUrl : "views/user/updateprofile.html",
+                controller : "EditProfileController"
             })
             .when("/myevents", {
                 templateUrl : "views/events/listmyevents.html",

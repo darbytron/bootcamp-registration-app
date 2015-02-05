@@ -1,14 +1,18 @@
-//URL KEYS
+/* Server URLS */
+//var URL = {
+//    userById :  "http://10.224.87.131:8080/Registration/resource/user/",
+//    userByEmail : "http://10.224.87.131:8080/Registration/resource/user/login",
+//    editUser : "http://10.224.87.131:8080/Registration/resource/user"
+//};
+
+/* Localhost URLS */
 var URL = {
-    userById :  "http://10.224.87.131:8080/Registration/resource/user/{userID}",
-    userByEmail : "http://10.224.87.131:8080/Registration/resource/user/login",
-    createUser : "http://10.224.87.131:8080/Registration/resource/user"
-};
-var URL_LOCAL = {
-    userById :  "http://localhost:8080/Registration/resource/user/{userID}",
+    userById :  "http://localhost:8080/Registration/resource/user/",
     userByEmail : "http://localhost:8080/Registration/resource/user/login",
-    createUser : "http://localhost:8080/Registration/resource/user"
+    editUser : "http://localhost:8080/Registration/resource/user"
 };
+
+
 angular.module('app.user', []);
 
 angular.module('app.user').service('EmailService', function() {
@@ -24,19 +28,14 @@ angular.module('app.user').service('EmailService', function() {
 
 })
 
-    //Controllers
-
     //Login Controller
     .controller('UserLoginCntrl', ['$scope', '$location', '$http', 'EmailService', function($scope, $location, $http, EmailService){
-
-
-        $scope.pageTitle = "Login";
 
         $scope.login = function() {
 
             var req = {
                 method: 'POST',
-                url: URL_LOCAL.userByEmail,
+                url: URL.userByEmail,
                 headers: {
                     'Content-Type': "text/plain"
                 },
@@ -46,62 +45,114 @@ angular.module('app.user').service('EmailService', function() {
             $http(req).success(function(data, status){
                 if(data == ""){
                     //alert("New user!");
-                    $location.path("/user");
+                    $location.path("/register");
                     EmailService.setEmail($scope.email);
                     console.log(status);
                 } else {
-                    alert ("Taking you to events...");
+                    $location.path("/user/view/" + data.id)
+                    //alert ("Taking you to events...");
 
                 }
             }).error(function(data, status){
                 console.log(status);
+                alert("Something went wrong :(");
             });
 
         }
     }])
 
-    //Update Profile
-//user.controller('UpdateProfileController', [ '$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
-//        $scope.pageTitle = "Profile";
-//        $scope.user = {};
-//
-//        $scope.getUser($routeParams.userId);
-//
-//
-//        $scope.getUser = function(userId) {
-//            $http.get('INSERT_GET_URL'+ userId).
-//                success(function(data) {
-//                    $scope.user = data;
-//                }).
-//                error(function(data, status) {
-//                    console.log("Failed to get information" + status);
-//                });
-//        };
-//
-//
-//        $scope.updateProfile = function() {
-//
-//        };
-//
-//    }]);
-//
-    .controller('RegistrationController', [ '$scope', '$location', '$http', 'EmailService', function($scope, $location, $http, EmailService) {
-        $scope.pageTitle = "Registration";
+    .controller('EditProfileController', [ '$scope', '$location', '$http', 'EmailService', '$routeParams', function($scope, $location, $http, EmailService, $routeParams) {
 
-        $scope.user.email = EmailService.getEmail();
+        $scope.pageConfig.emailReadOnly = "";
+        if ($routeParams.userId != null)
+        {
+                $scope.pageConfig.emailReadOnly = "readonly";
 
-        $scope.submitRegistration = function () {
-            console.log($scope.user.toJSON());
-            $http.post(URL_LOCAL.createUser, $scope.user)
-                .success(function(data, status){
-                    alert("User successfully created!");
-                })
-                .error(function(data, status){
-                    alert("Something went wrong" + status);
+                $http.get(URL.userById + $routeParams.userId).
+                    success(function(data) {
+                        $scope.user = data;
+                    }).
+                    error(function(data, status) {
+                        console.log("Failed to get information" + status);
+                        alert("Something went wrong :(");
+                    });
 
-                });
         }
-    }]);
+        else
+        {
+            $scope.user.email = EmailService.getEmail();
+        }
+
+
+        $scope.updateProfile = function () {
+            console.log($scope.user.toJSON());
+            if ($scope.user.id != null)
+            {
+                // User exists, just need to update
+                $http.put(URL.editUser, $scope.user)
+                    .success(function(data, status){
+                        //alert("User successfully created!");
+                        $location.path("/user/view/" + $data.id)
+                    })
+                    .error(function(data, status){
+                        console.log( status );
+                        alert("Something went wrong :(");
+                    });
+            }
+            else
+            {
+                // Create a new user
+                $http.put(URL.editUser, $scope.user)
+                    .success(function(data, status){
+                        //alert("User successfully created!");
+                        $location.path("/user/view/" + $data.id)
+                    })
+                    .error(function(data, status){
+                        console.log( status );
+                        alert("Something went wrong :(");
+                    });
+            }
+
+        }
+    }])
+
+    //.controller('UpdateProfileController', [ '$scope', '$location', '$http', 'EmailService', function($scope, $location, $http, EmailService) {
+    //
+    //    //$scope.user.email = EmailService.getEmail();
+    //
+    //    $scope.submitRegistration = function () {
+    //        //console.log($scope.user.toJSON());
+    //        $http.post(URL.editUser, $scope.user)
+    //            .success(function(data, status){
+    //                alert("User successfully created!");
+    //                $location.path("/user/view/" + $data.id)
+    //            })
+    //            .error(function(data, status){
+    //                alert("Something went wrong" + status);
+    //
+    //            });
+    //    }
+    //}])
+
+.controller('ViewProfileController', [ '$scope', '$location', '$http', 'EmailService', function($scope, $location, $http, EmailService) {
+    //$scope.pageTitle = "Registration";
+
+    //$scope.user.email = EmailService.getEmail();
+
+
+    $scope.user = {
+        "firstName": "Alex",
+        "lastName": "Krebiehl",
+        "email" : "alex@krebiehl.com",
+        "homeAddress": "50 Hidden Valley Dr #51",
+        "city": "Highland Heights",
+        "state": "KY",
+        "zip": "41076",
+        "country": "United States",
+        "primaryPhone": "(513) 418-1163",
+        "secondaryPhone": ""
+    };
+}]);
 
 
 //USER MODEL

@@ -5,18 +5,14 @@
 
 package com.sogeti.registration.beans;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,8 +21,8 @@ public class Event
 {
 	private int id, ownerId, status;
 	private String title, desc, logoPath, location;
-	private int typeId;
-//	private Set<Integer> users;
+	private List<User> users;
+//	private User owner = null;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -55,6 +51,14 @@ public class Event
 //		this.users = users;
 //	}
 	
+//	public User getOwner() {
+//		return owner;
+//	}
+//	
+//	public void setOwner(User owner) {
+//		this.owner = owner;
+//	}
+	
 	@Column(name="intOwnerId")
 	public int getOwnerId() {
 		return ownerId;
@@ -62,16 +66,6 @@ public class Event
 	
 	public void setOwnerId(int ownerId) {
 		this.ownerId = ownerId;
-	}
-	
-	
-	@Column(name="intTypeId")
-	public int getTypeId() {
-		return typeId;
-	}
-	
-	public void setTypeId(int typeId) {
-		this.typeId = typeId;
 	}
 	
 

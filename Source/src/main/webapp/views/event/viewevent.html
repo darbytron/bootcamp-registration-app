@@ -1,0 +1,108 @@
+<div>
+
+    <!-- Event Name Section -->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Event Name</h3>
+        </div>
+        <div class="panel-body">
+            {{event.name}}
+        </div>
+    </div>
+
+    <!-- Event Description Section -->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Description</h3>
+        </div>
+        <div class="panel-body">
+            {{event.description}}
+        </div>
+    </div>
+
+    <!-- Event Location Section -->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Location</h3>
+        </div>
+        <div class="panel-body">
+            {{event.location}}
+        </div>
+    </div>
+
+
+    <!-- Event Time Section -->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-calendar"></span>
+            <h3 class="panel-title">Event Time</h3>
+        </div>
+        <div class="panel-body">
+            {{event.startdate}} to {{event.enddate}}
+        </div>
+    </div>
+
+    <!-- Event Category Section -->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Category</h3>
+        </div>
+        <div class="panel-body">
+            {{event.category}}
+        </div>
+    </div>
+
+    <!-- Event Type Section -->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Event Type</h3>
+        </div>
+        <div class="panel-body">
+            {{event.type}}
+        </div>
+    </div>
+
+    <!-- Event Users Section -->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Attendees</h3>
+        </div>
+        <div class="panel-body">
+
+            <!-- List group -->
+            <ul class="list-group">
+                <div ng-repeat="user in registrations">
+                    <li class="list-group-item">{{user.firstName + " " + user.lastName}}</li>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- Event Food Section -->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Food being brought</h3>
+        </div>
+        <div class="panel-body">
+
+            <!-- List group -->
+            <ul class="list-group">
+                <div ng-repeat="foodItem in food">
+                    <li class="list-group-item">{{foodItem.name}}</li>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Event Type Section -->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Organizer</h3>
+        </div>
+        <div class="panel-body">
+            {{owner.firstName + " " + owner.lastName}}
+        </div>
+    </div>
+
+</div>

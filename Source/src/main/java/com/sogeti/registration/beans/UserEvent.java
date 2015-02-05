@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name="USEREVENT")
 public class UserEvent 
 {
-	private int id, eventId, foodId;
+	private int id, eventId, userid;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -37,13 +37,13 @@ public class UserEvent
 		this.eventId = eventId;
 	}
 
-	@Column(name="intFoodId")
-	public int getFoodId() {
-		return foodId;
+	@Column(name="intUserid")
+	public int getUserId() {
+		return userid;
 	}
 
-	public void setFoodId(int foodId) {
-		this.foodId = foodId;
+	public void setUserId(int userid) {
+		this.userid = userid;
 	}
 
 	

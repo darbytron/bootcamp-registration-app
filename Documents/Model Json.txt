@@ -1,47 +1,26 @@
-"category" : {
-	"id" : <int id>,
-	"name" : <string name>,
-	"events" : {
-		<array of events, see Event below>
-	}
-}
-	
-"type" : {
-	"id" : <int id>,
-	"name" : <string name>,
-	"events" : {
-		<array of events, see Event below>
-	}
-}
-	
 "event" : {
 	"id" : <int id>
 	"title" : <string title>,
-	"startDate" : <mm-dd-yyyy date>,
-	"endDate" : <mm-dd-yyyy date>,
-	"category" : <see Category above>,
-	"type" : <see Type above>,
-	"description" : <string description>,
-	"owner" : <see User below>,
-	"logo" : <returns picture, need to figure this out>,
+	"startDate" : <date string>,
+	"endDate" : <date string>,
+	"category" : <string category of event>,
+	"type" : <string type of event>,
+	"desc" : <string description>,
+	"ownerId" : <int User ID of owner>,
+	"logoPath" : <returns picture path>,
 	"location" : <string location>,
-	"status" : <string status>,
-	"registrations" : {
-		<array of users attending event, see Registrations below>
-	}
-	"food" : {
-		<array of food being brought, see Food below>
-	}
+	"status" : <int status (0 = inactive, 1 = active)>,
 }
 
-registrations : {
-	"userId" : <int user id>
-	"eventId" : <int event id>
+userevent : {
+	"id" : <int id of user event>,
+	"eventid" : <int id of event associated with this>,
+	"userid" : <int id of user associated with this>
 }
 
 "user" : {
 	"id" : <int id>
-	"username" : <string username>,
+	"email" : <string email>,
 	"password" : <string password>,
 	"firstName" : <string first name>,
 	"lastName" : <string last name>,
@@ -49,19 +28,14 @@ registrations : {
 	"address2" : <address line 2>,
 	"city" : <string city>,
 	"state" : <string state>,
-	"zip" : <int zip>,
-	"phoneHome" : <int phone number for home>,
-	"phoneCell" : <int phone number for cell>,
-	"phoneOffice" : <int phone number for office>,
-	"company" : <string company name>,
-	"branch" : <string branch location>
-	"food" : <see Food below>,
-	"moreInfo" : <string more informaiton>
-}
-
-"food" : {
-	"id" : <int id>,
-	"name" : <string name of food>
+	"zip" : <string zip>,
+	"phoneHome" : <string phone number for home>,
+	"phoneCell" : <string phone number for cell>,
+	"phoneOffice" : <string phone number for office>,
+	"companyName" : <string company name>,
+	"branchLocation" : <string branch location>,
+	"food" : <string food name, on front-end should be combo-box w/ no preference, vegetarian, no lactose, no gluten>,
+	"additionalInfo" : <string more information>
 }
 
 	

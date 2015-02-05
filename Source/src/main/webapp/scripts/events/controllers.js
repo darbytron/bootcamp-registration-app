@@ -84,11 +84,33 @@ angular.module('app.event').controller('MyEventsController', ['$scope', '$locati
 }])
 
 // Event View Controller
-.controller('EventViewController', [ '$scope', '$location', 'ngRoute', '$http', function($scope, $location, $routeParams, $http) {
-    $scope.pageTitle = $scope.event.title;
-    $scope.user = {};
+.controller('EventViewController', [ '$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
 
-    $scope.getEvent($routeParams.eventId);
+
+        $scope.event =
+            {
+                "id" : 1,
+                "title" : "test event1",
+                "startDate" : "10-24",
+                "endDate" : "12-5",
+                "category" : "some category",
+                "type" : "some type",
+                "description" : "blah blah blah",
+                "owner" : "Krebiehl, Alex",
+                "location" : "Dayton, OH",
+                "status" : "Active",
+                "registrations" : [
+                    { "firstName": "Tyler", "lastname": "Darby", "id": 7},
+                    { "firstName": "Jordan", "lastname": "Bossman", "id": 8},
+                    { "firstName": "Tyler", "lastname": "Robertson", "id": 9}
+                ],
+                "food" : [
+                    "Carrots",
+                    "Peas"
+                ]
+            },
+
+    //$scope.getEvent($routeParams.eventId);
 
 
     $scope.getEvent = function(eventId) {

@@ -25,7 +25,7 @@ public class User {
 		
 	private String email, password, firstName, lastName, address1, address2;
 	private String city, state, companyName, branchLocation, additionalInfo;
-	private String zip, phoneHome, phoneOffice, phoneCell;
+	private String zip, phoneHome, phoneOffice, phoneCell, food;
 	private int id;
 //	private HashSet<Integer> events;
 	
@@ -195,6 +195,16 @@ public class User {
 	public void setBranchLocation(String branchLocation) {
 		this.branchLocation = branchLocation;
 	}
+	
+	@Column(name="strFood")
+	public String getFood() {
+		return food;
+	}
+	
+	public void setFood(String food) {
+		this.food = food;
+	}
+	
 	
 	@Column(name="txtAddtionalInfo")
 	public String getAdditionalInfo() {

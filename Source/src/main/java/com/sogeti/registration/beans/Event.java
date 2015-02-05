@@ -21,7 +21,9 @@ public class Event
 {
 	private int id, ownerId, status;
 	private String title, desc, logoPath, location;
-	private List<User> users;
+	private int typeId;
+
+//	private List<User> users;
 //	private User owner = null;
 	
 	@Id
@@ -66,6 +68,16 @@ public class Event
 	
 	public void setOwnerId(int ownerId) {
 		this.ownerId = ownerId;
+	}
+	
+	
+	@Column(name="intTypeId")
+	public int getTypeId() {
+		return typeId;
+	}
+	
+	public void setTypeId(int typeId) {
+		this.typeId = typeId;
 	}
 	
 

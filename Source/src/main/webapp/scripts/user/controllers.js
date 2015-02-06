@@ -66,7 +66,8 @@ angular.module('app.user').service('EmailService', function() {
         $scope.user = {};
         $scope.pageConfig = {
             emailReadOnly: "",
-            panelTitle: ""
+            panelTitle: "",
+            updateProfileActive: "active"
         };
 
 

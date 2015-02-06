@@ -36,6 +36,10 @@ angular.module('app', ['ngRoute', 'app.user', 'app.event'])
                 templateUrl : "views/events/editevent.html",
                 controller : "EditEventController"
             })
+            .when("/event/search", {
+                templateUrl: "views/events/searchevent.html",
+                controller: "SearchEventController"
+            })
             .otherwise({redirectTo: '/'});
 	
     });

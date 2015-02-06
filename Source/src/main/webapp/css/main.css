@@ -17,6 +17,9 @@
     height: 0;
     border : 1px solid #000000;
 }
-
+.sogetiBanner{
+    width : 100%;
+    background-color: #EE4427;
+}
 
 

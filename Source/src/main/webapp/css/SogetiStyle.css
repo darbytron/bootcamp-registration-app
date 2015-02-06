@@ -1,6 +1,11 @@
 /*
 *	Additions by Julie Rogers for New Hire Training Academy 2015 Capstone
 */
+
+.borderless tbody tr td, .borderless thead tr th {
+    border: none;
+}
+
  .myPanelHeading {
     color: #fff !important;
     background-color: #ee4427 !important;
@@ -578,6 +583,7 @@ textarea {
 table {
     border-collapse: collapse;
     border-spacing: 0;
+    margin-bottom: 0px !important;
 }
 
 /* Tabs container */

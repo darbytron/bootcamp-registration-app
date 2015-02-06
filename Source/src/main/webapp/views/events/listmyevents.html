@@ -2,19 +2,25 @@
 <div ng-repeat="event in events">
 
     <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="eventBlock">
-            <div id="{{ event.id }}" ng-click="displayEvent( event.id )" class="glyphicon glyphicon-align-left glyphicon glyphicon-calendar" >
 
 
-                {{event.title}}
+        <div class="panel panel-default myPanel eventPanel eventBlock" id="{{ event.id }}" ng-click="displayEvent( event.id )">
+            <div class="panel-heading myPanelHeading" style="font-size:16px"><b>{{event.title}}</b></div>
+            <table class="table borderless">
+                <tbody>
 
+                <tr><td>{{event.startDate}} to {{event.endDate}}</td></tr>
+                <tr style="font-size:20px"><td>{{event.description}}</td></tr>
+                <tr><td>{{event.location}}</td></tr>
 
-            </div>
-            <!--<button type="button" class="btn btn-info btn-lg btn-block" >-->
-            <!--<span  aria-hidden="true"></span> -->
-            <!--</button>-->
+                </tbody>
+            </table>
         </div>
+
+
+        <!--<button type="button" class="btn btn-info btn-lg btn-block" >-->
+        <!--<span  aria-hidden="true"></span> -->
+        <!--</button>-->
+
     </div>
 </div>
-
-

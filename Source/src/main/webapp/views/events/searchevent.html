@@ -1,10 +1,85 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div>
+    <div class="panel panel-default myPanel">
+        <div class="panel-heading myPanelHeading">Search Events</div>
+        <div class="panel panel-body">
+            <div class="row">
+                <div
+            </div>
+        </div>
+        <table class="table table-striped">
+            <tbody>
+            <!-- Event Name Section -->
+            <tr>
+                <td><strong>Event Name</strong></td>
+                <td>{{event.title}}</td>
+            </tr>
 
-</body>
-</html>
+            <!-- Event Description Section -->
+            <tr>
+                <td><strong>Description</strong></td>
+                <td>{{event.description}}</td>
+            </tr>
+
+            <!-- Event Location Section -->
+            <tr>
+                <td><strong>Location</strong></td>
+                <td>{{event.location}}</td>
+            </tr>
+
+
+            <!-- Event Time Section -->
+            <tr>
+                <td><strong>Event Time</strong></td>
+                <td>{{event.startdate}} to {{event.enddate}}</td>
+            </tr>
+
+            <!-- Event Category Section -->
+            <tr>
+                <td><strong>Category</strong></td>
+                <td>{{event.category}}</td>
+            </tr>
+
+            <!-- Event Type Section -->
+            <tr>
+                <td><strong>Event Type</strong></td>
+                <td>{{event.type}}</td>
+            </tr>
+
+            <!-- Event Users Section -->
+            <tr>
+                <td><strong>Attendees</strong></td>
+                <td>
+                    <!-- List group -->
+                    <ul class="list-group">
+                        <div ng-repeat="user in registrations">
+                            <li class="list-group-item">{{user.firstName + " " + user.lastName}}</li>
+                        </div>
+                    </ul>
+                </td>
+            </tr>
+
+
+            <!-- Event Food Section -->
+            <tr>
+                <td><strong>Food</strong></td>
+                <td>
+                    <!-- List group -->
+                    <ul class="list-group">
+                        <div ng-repeat="foodItem in food">
+                            <li class="list-group-item">{{foodItem.name}}</li>
+                        </div>
+                    </ul>
+                </td>
+            </tr>
+
+            <!-- Event Type Section -->
+            <tr>
+                <td><strong>Organizer</strong></td>
+                <td>{{owner.firstName + " " + owner.lastName}}</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -25,7 +25,7 @@ angular.module('app.event').controller('MyEventsController', ['$scope', '$locati
                 "endDate" : "12-5",
                 "category" : "some category",
                 "type" : "some type",
-                "description" : "blah blah blah",
+                "description" : "Event description.",
                 "owner" : "Krebiehl, Alex",
                 "location" : "Dayton, OH",
                 "status" : "Active",
@@ -98,12 +98,12 @@ angular.module('app.event').controller('MyEventsController', ['$scope', '$locati
 
 .controller('EditEventController', ['$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http){
 
-
+    $scope.pageConfig = {};
 
     // If eventId is set, we are editing, otherwise it is a new event
     if ($routeParams.eventId != null)
     {
-
+        $scope.pageConfig.newEventActive = "active";
 
         /* test data */
         $scope.event = {

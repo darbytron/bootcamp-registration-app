@@ -1,73 +1,85 @@
-<h1>My Event</h1>
+
 <div class="panel panel-primary myPanel">
-    <!-- Default panel contents -->
     <div class="panel-heading myPanelHeading">{{mainPanelTitle}}</div>
 
-    <div class="panel-body">
-        <form ng-submit="updateEvent()">
-            <ul class="list-group">
-                <div class="form-group">
-                    <label for="event.title">Event title</label>
-                    <input type="text" class="form-control" id="event.title" placeholder="Enter event title" ng-model="event.title" required/>
-                </div>
-
-                <div class="form-group">
-                    <label for="event.description">Event description</label>
-                    <input type="text" class="form-control" id="event.description" placeholder="Enter event description" ng-model="event.description" required/>
-                </div>
-
-                <div class="form-group">
-                    <label for="event.location">Event location</label>
-                    <input type="text" class="form-control" id="event.location" placeholder="Enter event location" ng-model="event.location" required/>
-                </div>
+    <form ng-submit=updateEvent()">
+        <table class="block table table-condensed table-striped">
+            <thead></thead>
 
 
-                <div class="row">
-                    <div class='col-sm-3'>
-                        <div class="form-group">
-                            <div class='input-group date' id='startDatePicker'>
-                                <input type='text' class="form-control" placeholder="Begin date" ng-model="event.startdate" />
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                            </div>
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#startDatePicker').datetimepicker();
-                        });
-                    </script>
+            <tbody>
 
-                    <div class='col-sm-3'>
-                        <div class="form-group">
-                            <div class='input-group date' id='event.enddate'>
-                                <input type='text' class="form-control" placeholder="End date" ng-model="event.enddate" />
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                            </div>
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#event.enddate').datetimepicker();
-                        });
-                    </script>
+            <tr class="form-group">
+                <td><label for="event.title">Event title</label></td>
+                <td><input type="text" class="form-control" id="event.title" placeholder="Enter event title" ng-model="event.title" required/></td>
+            </tr>
 
-                </div>
+            <tr class="form-group">
+                <td><label for="event.description">Event description</label></td>
+                <td><input type="text" class="form-control" id="event.description" placeholder="Enter event description" ng-model="event.description" required/></td>
+            </tr>
 
-                <div class="form-group">
-                    <label for="event.category">Event category</label>
-                    <input type="text" class="form-control" id="event.category" placeholder="Enter event category" ng-model="event.category" required/>
-                </div>
-
-                <div class="form-group">
-                    <label for="event.type">Event type</label>
-                    <input type="text" class="form-control" id="event.type" placeholder="Enter event type" ng-model="event.type" required/>
-                </div>
+            <tr class="form-group">
+                <td><label for="event.location">Event location</label></td>
+                <td><input type="text" class="form-control" id="event.location" placeholder="Enter event location" ng-model="event.location" required/></td>
+            </tr>
 
 
-                <button type="submit" class="btn">Submit</button>
+            <!--<tr class="form-group">-->
+                <!--<td><label>Event start</label></td>-->
+                <!--<td>-->
+                    <!--<div class="form-group">-->
+                        <!--<div class='input-group date' id='startDatePicker'>-->
+                            <!--<input type='text' class="form-control" placeholder="Begin date" ng-model="event.startdate" />-->
+                            <!--<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>-->
+                            <!--</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<script type="text/javascript">-->
+                        <!--$(function () {-->
+                            <!--$('#startDatePicker').datetimepicker();-->
+                        <!--});-->
+                    <!--</script>-->
+                <!--</td>-->
 
-        </form>
-    </div>
+            <!--</tr>-->
+
+            <!--<tr class="form-group">-->
+                <!--<td><label>Event end</label></td>-->
+                <!--<td>-->
+                    <!--<div class="form-group">-->
+                        <!--<div class='input-group date' id='event.enddate'>-->
+                            <!--<input type='text' class="form-control" placeholder="End date" ng-model="event.enddate" />-->
+                            <!--<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>-->
+                            <!--</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<script type="text/javascript">-->
+                        <!--$(function () {-->
+                            <!--$('#event.enddate').datetimepicker();-->
+                        <!--});-->
+                    <!--</script>-->
+                <!--</td>-->
+
+
+            <!--</tr>-->
+
+            <tr class="form-group">
+                <td><label for="event.category">Event category</label></td>
+                <td><input type="text" class="form-control" id="event.category" placeholder="Enter event category" ng-model="event.category" required/></td>
+            </tr>
+
+            <tr class="form-group">
+                <td><label for="event.type">Event type</label></td>
+                <td><input type="text" class="form-control" id="event.type" placeholder="Enter event type" ng-model="event.type" required/></td>
+            </tr>
+
+
+            </tbody>
+        </table>
+        <div class="panel-footer">
+            <button type="submit" class="btn">Submit</button>
+        </div>
+
+    </form>
 </div>

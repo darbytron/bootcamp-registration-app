@@ -31,13 +31,6 @@ public class EventResource
 		
 		try {
 			EventService eventService = new EventService();
-//			UserService userv = new UserService();
-//			
-//			for(Event event : eventService.getEvents())
-//			{
-//				User user = userv.getUser(event.getOwnerId());
-//				event.setOwner(user);
-//			}
 
 			return eventService.getEvents();
 
@@ -56,10 +49,7 @@ public class EventResource
 		try {
 			EventService eventService = new EventService();
 			Event event = eventService.getEvent(id);
-//			UserService ues = new UserService();
-//			User user = ues.getUser(event.getOwnerId());
-//			event.setOwner(user);
-			
+
 			return event;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -68,6 +58,14 @@ public class EventResource
 		
 	}
 	
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Event updateEvent(Event event)
+	{
+		HibernateUtil.saveOrUpdate(event);
+		return event;
+	}
 
 	
 	@POST
@@ -78,19 +76,7 @@ public class EventResource
 //		event.getOwnerId()
 		HibernateUtil.save( event );
 	}
-	
-//	@DELETE
-//	@Path("{id}")
-//	public void deleteEvent(@PathParam("id") int id)
-//	{
-//		try {
-//			EventService eventService = new EventService();
-//			eventService.deleteEvent(id);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-	
+
 	@PUT
 //	@Path("/event/add/{id}")
 	@Path("/add/{id}")

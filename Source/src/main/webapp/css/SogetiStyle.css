@@ -583,6 +583,7 @@ textarea {
 table {
     border-collapse: collapse;
     border-spacing: 0;
+    margin-bottom: 0px !important;
 }
 
 /* Tabs container */

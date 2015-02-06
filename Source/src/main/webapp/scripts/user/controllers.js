@@ -75,10 +75,26 @@ angular.module('app.user').service('EmailService', function() {
         {
             $scope.pageConfig.emailReadOnly = "readonly";
             $scope.pageConfig.panelTitle = "Edit Profile";
+            $scope.emailReadOnly = "readonly";
+
+            $scope.user = {
+                "firstName": "Alex",
+                "lastName": "Krebiehl",
+                "email" : "Alex.Krebiehl@us.sogeti.com",
+                "homeAddress": "50 Hidden Valley Dr #51",
+                "city": "Highland Heights",
+                "state": "KY",
+                "zip": "41076",
+                "country": "United States",
+                "primaryPhone": "(513) 418-1163",
+                "secondaryPhone": "",
+                "company": "Sogeti",
+                "branch": "Cincinnati - GE"
+            };
 
             $http.get(URL.userById + $routeParams.userId).
                 success(function(data) {
-                    $scope.user = data;
+                    //$scope.user = data;
                 }).
                 error(function(data, status) {
                     console.log("Failed to get information" + status);
@@ -152,14 +168,16 @@ angular.module('app.user').service('EmailService', function() {
         $scope.user = {
             "firstName": "Alex",
             "lastName": "Krebiehl",
-            "email" : "alex@krebiehl.com",
+            "email" : "Alex.Krebiehl@us.sogeti.com",
             "homeAddress": "50 Hidden Valley Dr #51",
             "city": "Highland Heights",
             "state": "KY",
             "zip": "41076",
             "country": "United States",
             "primaryPhone": "(513) 418-1163",
-            "secondaryPhone": ""
+            "secondaryPhone": "",
+            "company": "Sogeti",
+            "branch": "Cincinnati - GE"
         };
     }]);
 

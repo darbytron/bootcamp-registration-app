@@ -15,7 +15,7 @@
 •	Additional Text Info (optional)
 
 -->
-
+<h1></h1>
 <div class="panel panel-primary myPanel">
     <div class="panel-heading myPanelHeading">{{pageConfig.panelTitle}}</div>
 
@@ -29,7 +29,7 @@
             <tr>
                 <td><label for="email" >Email address</label></td>
                 <td><input type="email" class="form-control" id="email"
-                           placeholder="Enter email" required {{pageConfig.emailReadOnly}} value="{{user.email}}"/></td>
+                           placeholder="Enter email" required ng-bind-html="emailReadOnly" value="{{user.email}}"/></td>
             </tr>
             <tr>
                 <td><label for="firstName">First Name</label></td>

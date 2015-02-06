@@ -1,0 +1,22 @@
+
+@media (max-width: 750px) {
+    .eventBlock {
+        padding-bottom: 15%;
+        margin : 10px;
+    }
+}
+@media (min-width:751px){
+    .eventBlock {
+        padding-bottom: 75%;
+        margin : 10px;
+    }
+}
+
+.eventBlock{
+    width: 100%;
+    height: 0;
+    border : 1px solid #000000;
+}
+
+
+

@@ -1,12 +1,19 @@
+<div ng-repeat="event in events">
+
+    <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="eventBlock">
+            <div id="{{ event.id }}" ng-click="displayEvent( event.id )" class="glyphicon glyphicon-align-left glyphicon glyphicon-calendar" >
 
 
-    <div class="row">
+                {{event.title}}
 
-        <div ng-repeat="event in events">
-            <button type="button" class="btn btn-info btn-lg btn-block" id="{{ event.id }}" ng-click="displayEvent( event.id )" >
-                <span class="glyphicon glyphicon-align-left glyphicon glyphicon-calendar" aria-hidden="true"></span> {{event.title}}
-            </button>
+
+            </div>
+            <!--<button type="button" class="btn btn-info btn-lg btn-block" >-->
+            <!--<span  aria-hidden="true"></span> -->
+            <!--</button>-->
         </div>
-
     </div>
+</div>
+
 

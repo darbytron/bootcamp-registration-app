@@ -25,7 +25,7 @@ angular.module('app.event').controller('MyEventsController', ['$scope', '$locati
                 "endDate" : "12-5",
                 "category" : "some category",
                 "type" : "some type",
-                "description" : "blah blah blah",
+                "description" : "Event description.",
                 "owner" : "Krebiehl, Alex",
                 "location" : "Dayton, OH",
                 "status" : "Active",
